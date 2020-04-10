@@ -4,7 +4,7 @@
 
 
 
-lass SentenceParse:
+class SentenceParse:
 
     def __init__(self):
         "we initialize the attribute stop words"
