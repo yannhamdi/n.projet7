@@ -57,3 +57,13 @@ lass SentenceParse:
         self.sentence = self.deleting_stop_words(self.sentence)
         self.sentence = self.deleting_several_spaces(self.sentence)
         return(self.sentence)
+
+
+
+
+  
+def main():
+    pa = SentenceParse()
+    text= "openclassroom  paris"
+    pa.deleting_several_spaces(text)
+main()
