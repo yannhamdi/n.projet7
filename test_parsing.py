@@ -66,7 +66,7 @@ monkeypatch.setattr("parsing.requests.get", MockGet)
 monkeypatch.setattr("parsing.SentenceParse.search_around", mock_search_around)
     # we call the method sending_to_api
     pa = script.SentenceParse()
-    assert pa.sending_to_api("petit test avec mock")
-    # Assert om the result's sending_to_api method
+    pa.sending_to_api("petit test avec mock")
+    # Assert on the result's sending_to_api method
     assert pa.address == FAKE_ADDRESS
 
