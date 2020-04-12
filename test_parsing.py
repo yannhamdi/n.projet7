@@ -69,4 +69,7 @@ monkeypatch.setattr("parsing.SentenceParse.search_around", mock_search_around)
     pa.sending_to_api("petit test avec mock")
     # Assert on the result's sending_to_api method
     assert pa.address == FAKE_ADDRESS
+    assert pa.lat == FAKE_LAT
+    assert pa.lng == FAKE_LNG
+
 
