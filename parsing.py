@@ -64,7 +64,7 @@ class SentenceParse:
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)    
-        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + "AIzaSyCKRDdANGAw0togqRWTg6uUOePiBia_798"
+        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + "keyapi"
         self.response = requests.get(self.url)
         try:
             self.response_json = self.response.json()
