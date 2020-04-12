@@ -84,4 +84,5 @@ def main():
     pa = SentenceParse()
     text= "openclassroom  paris"
     pa.deleting_several_spaces(text)
+    pa.sending_to_api(text)
 main()
