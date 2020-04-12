@@ -47,7 +47,7 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     FAKE_ADDRESS = "adresse de test, 7 cite de paradis 75010 paris, openclassroom"
     FAKE_LAT = 49.0
     FAKE_LNG = 3.0
-    # Definition du mock pour requests.get()
+    # Defining the mock for requests.get()
     class MockGet:
         def __init__(self,url):
             pass
@@ -58,14 +58,9 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
 	                  { "lat": FAKE_LAT, "lng": FAKE_LNG}
 
 	                  }}]
-	            }
-	# Definition du test pour search_around()
-    #def mock_search_around(self, lat, lng):
-        pass
-    # patching the request.get pour simuler l'appel de l'api
-    #monkeypatch.setattr("parsing.requests.get", MockGet)
-    # patching de SentenceParse.search_around pour eviter de tester deux methondes en mêmme temps. We replace it with a method which doesnt do anything
-    #monkeypatch.setattr("parsing.SentenceParse.search_around", mock_search_around)
+	}
+    # patching the request.get to mock the api call
+    monkeypatch.setattr("parsing.requests.get", MockGet)
     # we call the method sending_to_api
     pa = script.SentenceParse()
     pa.sending_to_api("petit test avec mock")
