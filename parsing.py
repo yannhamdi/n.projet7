@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
 
+import requests
 
 
 
@@ -57,7 +58,22 @@ class SentenceParse:
         self.sentence = self.deleting_stop_words(self.sentence)
         self.sentence = self.deleting_several_spaces(self.sentence)
         return(self.sentence)
+    
+    def sending_to_api(self, sentence):
+        "function that sends the sentence to google api"
+        self.sentence = str(sentence)    
+        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + KEY_API
+        self.response = requests.get(self.url)
+        try:
+            self.response_json = self.response.json()
+            self.address = (self.response_json["results"][0]["formatted_address"])
+            self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])
+            self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"])
+            print(self.address)
+            self.search_around(self.lat, self.lng)
 
+        except:
+            print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de chose mais sur ce coup je ne vois pas ce que tu veux dire.")
 
 
 
