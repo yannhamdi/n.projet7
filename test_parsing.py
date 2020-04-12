@@ -3,6 +3,8 @@
 
 import parsing as script
 
+import requests
+
 
 
 
