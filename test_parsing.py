@@ -61,9 +61,9 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     def mock_search_around(self, lat, lng):
         pass
     # patching the request.get pour simuler l'appel de l'api
-monkeypatch.setattr("parsing.requests.get", MockGet)
+    monkeypatch.setattr("parsing.requests.get", MockGet)
     # patching de SentenceParse.search_around pour eviter de tester deux methondes en mêmme temps. We replace it with a method which doesnt do anything
-monkeypatch.setattr("parsing.SentenceParse.search_around", mock_search_around)
+    monkeypatch.setattr("parsing.SentenceParse.search_around", mock_search_around)
     # we call the method sending_to_api
     pa = script.SentenceParse()
     pa.sending_to_api("petit test avec mock")
