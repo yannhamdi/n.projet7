@@ -5,6 +5,7 @@ import requests
 
 import json
 
+from pprint import pprint
 
 
 class SentenceParse:
@@ -64,7 +65,7 @@ class SentenceParse:
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)    
-        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + "keyapi"
+        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + "KEyapi"
         self.response = requests.get(self.url)
         try:
             self.response_json = self.response.json()
@@ -72,17 +73,29 @@ class SentenceParse:
             self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])
             self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"])
             print(self.address)
-            #self.search_around(self.lat, self.lng)
-
         except:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de chose mais sur ce coup je ne vois pas ce que tu veux dire.")
 
-
-
-  
+    def search_around(self, lat, lng):
+        "function that tells us stories about a place near"
+        self.url_2 = "https://fr.wikipedia.org/w/api.php"
+        self.params = {
+            "format": "json", # format de la réponse
+            "action": "query", # action à réaliser
+            "list": "geosearch", # méthode de recherche
+            "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
+            "gscoord": f"{lat}|{lng}" # coordonnées GPS séparées par une barre verticale
+                }
+        self.response = requests.get(self.url_2, params = self.params)
+        self.geosearch_data = self.response.json()
+        self.title = self.geosearch_data["batchcomplete"]['']["query"]["geosearch"][0]
+        print("Voici la réponse obtenue: ")
+        #print(self.title)
+       
 def main():
     pa = SentenceParse()
     text= "openclassroom  paris"
     pa.deleting_several_spaces(text)
     pa.sending_to_api(text)
+    pa.search_around(pa.lat, pa.lng)
 main()
