@@ -7,6 +7,8 @@ import json
 
 from pprint import pprint
 
+from config import keyapi
+
 
 class SentenceParse:
 
@@ -65,7 +67,7 @@ class SentenceParse:
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)    
-        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + "KEyapi"
+        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + keyapi
         self.response = requests.get(self.url)
         try:
             self.response_json = self.response.json()
@@ -88,9 +90,8 @@ class SentenceParse:
                 }
         self.response = requests.get(self.url_2, params = self.params)
         self.geosearch_data = self.response.json()
-        self.title = self.geosearch_data["batchcomplete"]['']["query"]["geosearch"][0]
-        print("Voici la réponse obtenue: ")
-        #print(self.title)
+        self.title = self.geosearch_data["query"]["geosearch"][0]['title']
+        print(self.title)
        
 def main():
     pa = SentenceParse()

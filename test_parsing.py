@@ -86,7 +86,7 @@ def test_search_around_correct_result(monkeypatch):
 
         def json(self):
 	            return {"results":
-	            {'geosearch': [{'title': 'openclassroom'}]}}
+	             {'geosearch': [{'title':'openclassroom'}]}}
     monkeypatch.setattr("parsing.requests.get", MockReturn)
     pa = script.SentenceParse()
     pa.search_around(F_LAT, F_LNG)
