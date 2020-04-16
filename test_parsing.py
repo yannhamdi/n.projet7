@@ -107,7 +107,7 @@ def test_search_pageid_correct(monkeypatch):
             pass
         def json(self):
             return{ 'query': {'pages': {PAGE_ID: {'extract':'ceci est un mock api',
-                                       'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University',}}
+                                       'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'}}
 
             }
     monkeypatch.setattr("parsing.requests.get", MockReturning)
