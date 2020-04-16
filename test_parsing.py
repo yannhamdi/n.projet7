@@ -109,7 +109,7 @@ def test_search_pageid_correct(monkeypatch):
                 return{ 'query': {'pages': {PAGE_ID: {'extract':'ceci est un mock api',
                                        'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'}}
 
-            }
+            }}
     monkeypatch.setattr("parsing.requests.get", MockReturning)
     pa = script.SentenceParse()
     pa.search_page_id(7874647)
