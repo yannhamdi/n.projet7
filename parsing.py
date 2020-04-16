@@ -9,6 +9,8 @@ from pprint import pprint
 
 from config import keyapi
 
+from random import *
+
 
 class SentenceParse:
 
@@ -91,8 +93,11 @@ class SentenceParse:
         self.response = requests.get(self.url_2, params = self.params)
         try:
             self.geosearch_data = self.response.json()
-            self.pageid = self.geosearch_data["query"]["geosearch"][0]['pageid']
+            self.nbre = len(self.geosearch_data["query"]["geosearch"])
+            self.choice = ((randint(0, self.nbre)) - 1)
+            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']
             print(self.pageid)
+            
         except:
             print("La requête a donné un statut d'erreur")       
 def main():
