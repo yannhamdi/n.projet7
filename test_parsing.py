@@ -85,9 +85,9 @@ def test_search_around_correct_result(monkeypatch):
             pass
 
         def json(self):
-	            return {
-                          'query': {'geosearch':[{
-                          'pageid': '9845754'}]}}
+	        return {
+                    'query': {'geosearch':[{
+                        'pageid': '9845754'}]}}
     monkeypatch.setattr("parsing.requests.get", MockReturn)
     pa = script.SentenceParse()
     pa.search_around(F_LAT, F_LNG)
@@ -106,7 +106,7 @@ def test_search_pageid_correct(monkeypatch):
                        "pageids": PAGE_ID}):
             pass
         def json(self):
-            return{ 'query': {'pages': {PAGE_ID: {'extract':'ceci est un mock api',
+                return{ 'query': {'pages': {PAGE_ID: {'extract':'ceci est un mock api',
                                        'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'}}
 
             }
