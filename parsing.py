@@ -89,10 +89,12 @@ class SentenceParse:
             "gscoord": f"{lat}|{lng}" # coordonnées GPS séparées par une barre verticale
                 }
         self.response = requests.get(self.url_2, params = self.params)
-        self.geosearch_data = self.response.json()
-        self.title = self.geosearch_data["query"]["geosearch"][0]['title']
-        print(self.title)
-       
+        try:
+            self.geosearch_data = self.response.json()
+            self.title = self.geosearch_data["query"]["geosearch"][0]['title']
+            print(self.title)
+        except:
+            print("La requête a donné un statut d'erreur")       
 def main():
     pa = SentenceParse()
     text= "openclassroom  paris"
