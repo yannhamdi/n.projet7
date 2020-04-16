@@ -91,8 +91,8 @@ class SentenceParse:
         self.response = requests.get(self.url_2, params = self.params)
         try:
             self.geosearch_data = self.response.json()
-            self.title = self.geosearch_data["query"]["geosearch"][0]['title']
-            print(self.title)
+            self.pageid = self.geosearch_data["query"]["geosearch"][0]['pageid']
+            print(self.pageid)
         except:
             print("La requête a donné un statut d'erreur")       
 def main():
