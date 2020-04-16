@@ -87,11 +87,11 @@ def test_search_around_correct_result(monkeypatch):
         def json(self):
 	            return {
                           'query': {'geosearch':[{
-                          'title': 'openclassroom'}]}}
+                          'pageid': '9845754'}]}}
     monkeypatch.setattr("parsing.requests.get", MockReturn)
     pa = script.SentenceParse()
     pa.search_around(F_LAT, F_LNG)
-    assert pa.title == 'openclassroom'
+    assert pa.pageid == '9845754'
 
 
 
