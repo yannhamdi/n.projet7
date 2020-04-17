@@ -99,11 +99,29 @@ class SentenceParse:
             print(self.pageid)
             
         except:
-            print("La requête a donné un statut d'erreur")       
+            print("La requête a donné un statut d'erreur")      
+    def search_pageid(self, pageid):
+        "method that look nearby our place" 
+        self.param = params = {
+    "format": "json", # format de la réponse
+    "action": "query", # action à effectuer
+    "prop": "extracts|info", # Choix des propriétés pour les pages requises
+    "inprop": "url", # Fournit une URL complète, une URL de modification, et l’URL canonique de chaque page.
+    "exchars": 1200, # Nombre de caractères à retourner
+    "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
+    "pageids": self.pageid
+}
+        self.response2 = requests.get(self.url_2, params = self.param)
+        self.info_search = self.response2.json()
+        self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
+        self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
+        print(self.extract)
+        print(self.fullurl)
 def main():
     pa = SentenceParse()
     text= "openclassroom  paris"
     pa.deleting_several_spaces(text)
     pa.sending_to_api(text)
     pa.search_around(pa.lat, pa.lng)
+    pa.search_pageid(pa.pageid)
 main()
