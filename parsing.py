@@ -102,6 +102,8 @@ class SentenceParse:
             print("La requête a donné un statut d'erreur")      
     def search_pageid(self, pageid):
         "method that look nearby our place" 
+        self.pageid = pageid
+        self.url_2 = "https://fr.wikipedia.org/w/api.php"
         self.param = params = {
     "format": "json", # format de la réponse
     "action": "query", # action à effectuer

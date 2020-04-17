@@ -113,7 +113,7 @@ def test_search_pageid_correct(monkeypatch):
     monkeypatch.setattr("parsing.requests.get", MockReturning)
     pa = script.SentenceParse()
     pa.search_pageid(pageid)
-    assert pa.extract == 'ceci est un mock'
+    assert pa.extract == 'ceci est un mock api'
     assert pa.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
     
    
