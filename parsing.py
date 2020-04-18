@@ -113,12 +113,15 @@ class SentenceParse:
     "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
     "pageids": self.pageid
 }
-        self.response2 = requests.get(self.url_2, params = self.param)
-        self.info_search = self.response2.json()
-        self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
-        self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
-        print(self.extract)
-        print(self.fullurl)
+        try:
+            self.response2 = requests.get(self.url_2, params = self.param)
+            self.info_search = self.response2.json()
+            self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
+            self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
+            print(self.extract)
+            print(self.fullurl)
+        except:
+            print("La requête a donné un statut d'erreur")
 def main():
     pa = SentenceParse()
     text= "openclassroom  paris"
