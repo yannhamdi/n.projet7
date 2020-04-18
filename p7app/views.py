@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/homepage/')
 def index():
-    return render_template("homepage.html")
+    return render_template("p7homepage.html")
 
 
 
