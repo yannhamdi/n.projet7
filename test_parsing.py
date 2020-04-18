@@ -63,12 +63,12 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     # patching the request.get to mock the api call
     monkeypatch.setattr("parsing.requests.get", MockGet)
     # we call the method sending_to_api
-    pa = script.SentenceParse()
-    pa.sending_to_api("petit test avec mock")
+    pi = script.TreatingApi()
+    pi.sending_to_api("petit test avec mock")
     # Assert on the result's sending_to_api method
-    assert pa.address == FAKE_ADDRESS
-    assert pa.lat == FAKE_LAT
-    assert pa.lng == FAKE_LNG
+    assert pi.address == FAKE_ADDRESS
+    assert pi.lat == FAKE_LAT
+    assert pi.lng == FAKE_LNG
 
 
 def test_search_around_correct_result(monkeypatch):
@@ -89,9 +89,9 @@ def test_search_around_correct_result(monkeypatch):
                     'query': {'geosearch':[{
                         'pageid': '9845754'}]}}
     monkeypatch.setattr("parsing.requests.get", MockReturn)
-    pa = script.SentenceParse()
-    pa.search_around(F_LAT, F_LNG)
-    assert pa.pageid == '9845754'
+    pi = script.TreatingApi()
+    pi.search_around(F_LAT, F_LNG)
+    assert pi.pageid == '9845754'
 
 def test_search_pageid_correct(monkeypatch):
     "we mock our method search_page_id"
@@ -111,10 +111,10 @@ def test_search_pageid_correct(monkeypatch):
 
             }}
     monkeypatch.setattr("parsing.requests.get", MockReturning)
-    pa = script.SentenceParse()
-    pa.search_pageid(pageid)
-    assert pa.extract == 'ceci est un mock api'
-    assert pa.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
+    pi = script.TreatingApi()
+    pi.search_pageid(pageid)
+    assert pi.extract == 'ceci est un mock api'
+    assert pi.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
     
    
 
