@@ -66,10 +66,16 @@ class SentenceParse:
         self.sentence = self.deleting_several_spaces(self.sentence)
         return(self.sentence)
     
+class TreatingApi:
+    def __init__(self):
+        "we initialize what is necessary for our requests"
+        self.url_1 = "https://maps.googleapis.com/maps/api/geocode/json?address="
+        self.url_2 = "https://fr.wikipedia.org/w/api.php"
+        
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)    
-        self.url= "https://maps.googleapis.com/maps/api/geocode/json?address="+ self.sentence + "&key=" + keyapi
+        self.url= self.url_1 + self.sentence + "&key=" + keyapi
         self.response = requests.get(self.url)
         try:
             self.response_json = self.response.json()
@@ -82,7 +88,6 @@ class SentenceParse:
 
     def search_around(self, lat, lng):
         "function that tells us stories about a place near"
-        self.url_2 = "https://fr.wikipedia.org/w/api.php"
         self.params = {
             "format": "json", # format de la réponse
             "action": "query", # action à réaliser
@@ -95,15 +100,12 @@ class SentenceParse:
             self.geosearch_data = self.response.json()
             self.nbre = len(self.geosearch_data["query"]["geosearch"])
             self.choice = ((randint(0, self.nbre)) - 1)
-            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']
-            print(self.pageid)
-            
+            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']    
         except:
             print("La requête a donné un statut d'erreur")      
     def search_pageid(self, pageid):
         "method that look nearby our place" 
         self.pageid = pageid
-        self.url_2 = "https://fr.wikipedia.org/w/api.php"
         self.param = params = {
     "format": "json", # format de la réponse
     "action": "query", # action à effectuer
@@ -118,6 +120,7 @@ class SentenceParse:
             self.info_search = self.response2.json()
             self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
             self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
+            print("T'ai je déjà parler de ce que l'on pouvait trouver dans les alentours de ce que tu me demandes?")
             print(self.extract)
             print(self.fullurl)
         except:
@@ -126,7 +129,8 @@ def main():
     pa = SentenceParse()
     text= "openclassroom  paris"
     pa.deleting_several_spaces(text)
-    pa.sending_to_api(text)
-    pa.search_around(pa.lat, pa.lng)
-    pa.search_pageid(pa.pageid)
+    pi = TreatingApi()
+    pi.sending_to_api(text)
+    pi.search_around(pi.lat, pi.lng)
+    pi.search_pageid(pi.pageid)
 main()
