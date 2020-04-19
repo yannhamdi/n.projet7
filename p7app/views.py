@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/homepage/')
+@app.route('/p7homepage/')
 def index():
     return render_template("p7homepage.html")
 
