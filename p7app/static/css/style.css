@@ -1,11 +1,19 @@
-body
+header
 {
 	color: red;
+	font-size: x-large;
+    background-color: orange;
 
 	
 }
 
 
-	
+.catchphrase
+{
+	color: black;
+	text-align: center;
+	font-size: xx-large;
+
+}	
 
 
