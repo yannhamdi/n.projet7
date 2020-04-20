@@ -1,8 +1,16 @@
+body
+{
+	background-image: url(/static/img/fond.jpg);
+}
+
+
 header
 {
 	color: red;
 	font-size: x-large;
-    background-color: orange;
+	background-image: url(/static/img/robot.png);
+	background-repeat: no-repeat;
+    
 
 	
 }
@@ -13,6 +21,7 @@ header
 	color: black;
 	text-align: center;
 	font-size: xx-large;
+	font-style: oblique;
 
 }	
 
