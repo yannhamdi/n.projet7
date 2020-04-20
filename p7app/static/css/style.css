@@ -11,6 +11,7 @@ header
 	background-image: url(/static/img/robot.png);
 	background-repeat: repeat;
 	background-position: center;
+	height:20vh;
     
 
 	
@@ -29,7 +30,7 @@ header
 section h1
 {
 	color: grey;
-	font-size: 80px;
+	font-size: 40px;
 	font-style: italic;
 }
 
@@ -38,16 +39,29 @@ section
 {
 	color: grey;
 	font-style: oblique;
+	height: 60vh;
 
 }
 form
 {
-	font-size:80px;
+	font-size:30px;
+
 }
 
 footer
 {
 	color: red;
 	font-size :10px;
-	text-align: center
+	text-align: center;
+	height: 20vh;
+
+}
+	
+footer h1 
+{
+	margin-top: 90px
+}
+input
+{
+	background-color: aqua ;
 }
