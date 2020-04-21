@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
@@ -12,6 +12,12 @@ app = Flask(__name__)
 def index():
     return render_template("p7homepage.html")
 
+
+@app.route('/sendingServer', methods=["POST"])
+def sending_question():
+    user_question = request.form["question"]
+    print(user_question)
+    return jsonify("pas de reponse")
 
 
 if __name__ == "__main__":
