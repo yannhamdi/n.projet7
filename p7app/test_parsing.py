@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
 
-from p7app.parsing import * as script
+from p7app.parsing import *
 
 
 
@@ -15,7 +15,7 @@ import json
 
 #test if our function send a sentence in lower case
 def test_in_lower_case():
-    pa = script.SentenceParse()
+    pa = SentenceParse()
     x = "TEST"
     assert pa.in_lower_case(x) == "test"
 
@@ -23,25 +23,25 @@ def test_in_lower_case():
 
 def test_deleting_stop_words():
     useless_sentence = "afin ailleurs openclassroom"
-    pa = script.SentenceParse()
+    pa = SentenceParse()
     assert pa.deleting_stop_words(useless_sentence) == "openclassroom"
 
 
 def test_deleting_special():
     special_sentence = "openclassroom,paris:france"
-    pa = script.SentenceParse()
+    pa = SentenceParse()
     assert pa.deleting_special(special_sentence) == "openclassroom paris france"
 
 
 def test_deleting_several_spaces():
     sentence = "openclassroom  paris"
-    pa =  script.SentenceParse()
+    pa = SentenceParse()
     assert pa.deleting_several_spaces(sentence) == "openclassroom paris"
 
 
 def test_returning_cleaned_sentence():
     sentence = "TEST,openclassroom ailleurs:hamdi"
-    pa = script.SentenceParse()
+    pa = SentenceParse()
     assert pa.returning_cleaned_sentence(sentence) == "test openclassroom hamdi"
 
 
@@ -62,9 +62,9 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
 	                  }}]
 	}
     # patching the request.get to mock the api call
-    monkeypatch.setattr("parsing.requests.get", MockGet)
+    monkeypatch.setattr("requests.get", MockGet)
     # we call the method sending_to_api
-    pi = script.TreatingApi()
+    pi = TreatingApi()
     pi.sending_to_api("petit test avec mock")
     # Assert on the result's sending_to_api method
     assert pi.address == FAKE_ADDRESS
@@ -89,8 +89,8 @@ def test_search_around_correct_result(monkeypatch):
 	        return {
                     'query': {'geosearch':[{
                         'pageid': '9845754'}]}}
-    monkeypatch.setattr("parsing.requests.get", MockReturn)
-    pi = script.TreatingApi()
+    monkeypatch.setattr("requests.get", MockReturn)
+    pi = TreatingApi()
     pi.search_around(F_LAT, F_LNG)
     assert pi.pageid == '9845754'
 
@@ -111,8 +111,8 @@ def test_search_pageid_correct(monkeypatch):
                                        'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'}}
 
             }}
-    monkeypatch.setattr("parsing.requests.get", MockReturning)
-    pi = script.TreatingApi()
+    monkeypatch.setattr("requests.get", MockReturning)
+    pi = TreatingApi()
     pi.search_pageid(pageid)
     assert pi.extract == 'ceci est un mock api'
     assert pi.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
