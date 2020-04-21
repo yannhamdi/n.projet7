@@ -7,7 +7,7 @@ import json
 
 from pprint import pprint
 
-from config import keyapi
+from p7app.config import keyapi
 
 from random import *
 
@@ -126,11 +126,11 @@ class TreatingApi:
         except:
             print("La requête a donné un statut d'erreur")
 def main():
-    pa = SentenceParse()
-    text= "openclassroom  paris"
-    pa.deleting_several_spaces(text)
-    pi = TreatingApi()
-    pi.sending_to_api(text)
-    pi.search_around(pi.lat, pi.lng)
-    pi.search_pageid(pi.pageid)
+    ff = SentenceParse()
+    text = "OPENCLASSROOM"
+    ff.returning_cleaned_sentence(text)
+    fa = TreatingApi()
+    fa.sending_to_api(ff.sentence)
+    fa.search_around(fa.lat, fa.lng)
+    fa.search_pageid(fa.pageid)
 main()

@@ -1,5 +1,9 @@
 from flask import Flask, render_template, jsonify, request
 
+
+from . import parsing as par 
+
+
 app = Flask(__name__)
 
 # Config options - Make sure you created a 'config.py' file.
@@ -16,8 +20,10 @@ def index():
 @app.route('/sendingServer', methods=["POST"])
 def sending_question():
     user_question = request.form["question"]
-    print(user_question)
-    return jsonify("pas de reponse")
+    client_treatment = par.SentenceParse()
+    client_treatment.in_lower_case(user_question)
+    print(client_treatment.sentence)
+    return jsonify(["pas de reponse"])
 
 
 if __name__ == "__main__":
