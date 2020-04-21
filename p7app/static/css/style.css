@@ -65,3 +65,48 @@ input
 {
 	background-color: aqua ;
 }
+
+
+@media screen and (max-width: 1024px)
+{
+	header
+	{
+		height: auto;
+		width: auto;
+	}
+	section
+	{
+		height: auto;
+		width: auto;
+
+	}
+	footer
+	{
+		height: auto;
+		width: auto
+	}
+}
+
+@media all and (max-device-width: 480px)
+{
+	header
+	{
+		height: auto;
+		width: auto;
+
+	}
+	section
+	{
+		height: auto;
+		width: auto;
+
+	}
+	footer
+	{
+		height: auto;
+		width: auto
+	}
+   
+   }
+}
+
