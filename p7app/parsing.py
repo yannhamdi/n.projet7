@@ -80,8 +80,8 @@ class TreatingApi:
         try:
             self.response_json = self.response.json()
             self.address = (self.response_json["results"][0]["formatted_address"])
-            self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])
-            self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"])
+            self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])  #we select our latitude
+            self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"]) #we select our longitude
             print(self.address)
         except:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de chose mais sur ce coup je ne vois pas ce que tu veux dire.")
@@ -111,7 +111,7 @@ class TreatingApi:
     "action": "query", # action à effectuer
     "prop": "extracts|info", # Choix des propriétés pour les pages requises
     "inprop": "url", # Fournit une URL complète, une URL de modification, et l’URL canonique de chaque page.
-    "exchars": 1200, # Nombre de caractères à retourner
+    "exchars": 500, # Nombre de caractères à retourner
     "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
     "pageids": self.pageid
 }
@@ -125,6 +125,24 @@ class TreatingApi:
             print(self.fullurl)
         except:
             print("La requête a donné un statut d'erreur")
+class Papybot(TreatingApi):
+    "class that will send all the informartion to our webpage"
+    def __init__(self):
+        dd = TreatingApi()
+        a = dd.lat
+        b = dd.lng
+    def transformed_data_into_json_results(self):
+        a = self.treating_results.lat
+        b = self.treating_results.lng
+        "we are going to encode our answers from others classes to an answers which can be treated by js"
+        self.sending_gps_coordinate = {}
+        self.sending_gps_coordinate = {"latitude": a , "longitude": b}
+
+
+
+ 
+    
+        
 def main():
     ff = SentenceParse()
     text = "OPENCLASSROOM"
@@ -133,4 +151,7 @@ def main():
     fa.sending_to_api(ff.sentence)
     fa.search_around(fa.lat, fa.lng)
     fa.search_pageid(fa.pageid)
+    fe = Papybot()
+    fe.transformed_data_into_json_results()
+    print(fe.sending_gps_coordinate)
 main()

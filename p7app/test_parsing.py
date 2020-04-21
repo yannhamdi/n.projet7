@@ -102,7 +102,7 @@ def test_search_pageid_correct(monkeypatch):
                      "action": "query", # action à effectuer
                        "prop": "extracts|info", # Choix des propriétés pour les pages requises
                        "inprop": "url", # Fournit une URL complète, une URL de modification, et l’URL canonique de chaque page.
-                      "exchars": 1200, # Nombre de caractères à retourner
+                      "exchars": 500, # Nombre de caractères à retourner
                        "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
                        "pageids": pageid}):
             pass
@@ -118,11 +118,6 @@ def test_search_pageid_correct(monkeypatch):
     assert pi.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
     
    
-def test_papy_parsing():
-    "test if our method for the papy class sends us a correct sentence"
-    final_sentence = "OPENCLASSROOM  et ?"
-    po = script.PapyBot()
-    assert po.sentence_treated == "openclassroom "
 
 
 
