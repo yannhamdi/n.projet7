@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
+from p7app.config import keyapi
 
 import requests
 
@@ -7,9 +8,10 @@ import json
 
 from pprint import pprint
 
-from p7app.config import keyapi
-
 from random import *
+
+from pprint import pprint
+
 
 
 class SentenceParse:
@@ -125,18 +127,16 @@ class TreatingApi:
             print(self.fullurl)
         except:
             print("La requête a donné un statut d'erreur")
-class Papybot(TreatingApi):
+class Papybot():
     "class that will send all the informartion to our webpage"
     def __init__(self):
-        dd = TreatingApi()
-        a = dd.lat
-        b = dd.lng
-    def transformed_data_into_json_results(self):
-        a = self.treating_results.lat
-        b = self.treating_results.lng
-        "we are going to encode our answers from others classes to an answers which can be treated by js"
         self.sending_gps_coordinate = {}
-        self.sending_gps_coordinate = {"latitude": a , "longitude": b}
+        
+    def transformed_data_into_json_results(self, lat, lng):
+        self.a = lat
+        self.b = lng
+        "we are going to encode our answers from others classes to an answers which can be treated by js"
+        self.sending_gps_coordinate = {"latitude": self.a , "longitude": self.b}
 
 
 
@@ -144,6 +144,7 @@ class Papybot(TreatingApi):
     
         
 def main():
+    pprint(sys.path)
     ff = SentenceParse()
     text = "OPENCLASSROOM"
     ff.returning_cleaned_sentence(text)
@@ -152,6 +153,6 @@ def main():
     fa.search_around(fa.lat, fa.lng)
     fa.search_pageid(fa.pageid)
     fe = Papybot()
-    fe.transformed_data_into_json_results()
+    fe.transformed_data_into_json_results(fa.lat, fa.lng)
     print(fe.sending_gps_coordinate)
 main()
