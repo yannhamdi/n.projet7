@@ -17,6 +17,7 @@ class PapyBot():
         self.sending_gps_coordinate = {}
         
         
+        
     def transformed_gps_into_json_results(self, lat, lng):
         self.a = lat
         self.b = lng
@@ -31,7 +32,9 @@ class PapyBot():
         self.lng = lng
         ap = mediawiki.MediaWikiApi()
         ap.search_around(lat, lng)
-        print("voici:", ap.pageid)
+        self.pageid_for_js = ap.pageid
+
+        
         
         
 
