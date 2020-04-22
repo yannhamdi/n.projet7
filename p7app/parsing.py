@@ -1,16 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
-from p7app.config import keyapi
 
-import requests
-
-import json
-
-from pprint import pprint
-
-from random import *
-
-from pprint import pprint
 
 
 
@@ -68,75 +58,8 @@ class SentenceParse:
         self.sentence = self.deleting_several_spaces(self.sentence)
         return(self.sentence)
     
-class TreatingApi:
-    def __init__(self):
-        "we initialize what is necessary for our requests"
-        self.url_1 = "https://maps.googleapis.com/maps/api/geocode/json?address="
-        self.url_2 = "https://fr.wikipedia.org/w/api.php"
-        
-    def sending_to_api(self, sentence):
-        "function that sends the sentence to google api"
-        self.sentence = str(sentence)    
-        self.url= self.url_1 + self.sentence + "&key=" + keyapi
-        self.response = requests.get(self.url)
-        try:
-            self.response_json = self.response.json()
-            self.address = (self.response_json["results"][0]["formatted_address"])
-            self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])  #we select our latitude
-            self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"]) #we select our longitude
-            print(self.address)
-        except:
-            print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de chose mais sur ce coup je ne vois pas ce que tu veux dire.")
 
-    def search_around(self, lat, lng):
-        "function that tells us stories about a place near"
-        self.params = {
-            "format": "json", # format de la réponse
-            "action": "query", # action à réaliser
-            "list": "geosearch", # méthode de recherche
-            "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
-            "gscoord": f"{lat}|{lng}" # coordonnées GPS séparées par une barre verticale
-                }
-        self.response = requests.get(self.url_2, params = self.params)
-        try:
-            self.geosearch_data = self.response.json()
-            self.nbre = len(self.geosearch_data["query"]["geosearch"])
-            self.choice = ((randint(0, self.nbre)) - 1)
-            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']    
-        except:
-            print("La requête a donné un statut d'erreur")      
-    def search_pageid(self, pageid):
-        "method that look nearby our place" 
-        self.pageid = pageid
-        self.param = params = {
-    "format": "json", # format de la réponse
-    "action": "query", # action à effectuer
-    "prop": "extracts|info", # Choix des propriétés pour les pages requises
-    "inprop": "url", # Fournit une URL complète, une URL de modification, et l’URL canonique de chaque page.
-    "exchars": 500, # Nombre de caractères à retourner
-    "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
-    "pageids": self.pageid
-}
-        try:
-            self.response2 = requests.get(self.url_2, params = self.param)
-            self.info_search = self.response2.json()
-            self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
-            self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
-            print("T'ai je déjà parler de ce que l'on pouvait trouver dans les alentours de ce que tu me demandes?")
-            print(self.extract)
-            print(self.fullurl)
-        except:
-            print("La requête a donné un statut d'erreur")
-class Papybot():
-    "class that will send all the informartion to our webpage"
-    def __init__(self):
-        self.sending_gps_coordinate = {}
-        
-    def transformed_data_into_json_results(self, lat, lng):
-        self.a = lat
-        self.b = lng
-        "we are going to encode our answers from others classes to an answers which can be treated by js"
-        self.sending_gps_coordinate = {"latitude": self.a , "longitude": self.b}
+
 
 
 
@@ -144,15 +67,9 @@ class Papybot():
     
         
 def main():
-    pprint(sys.path)
     ff = SentenceParse()
     text = "OPENCLASSROOM"
     ff.returning_cleaned_sentence(text)
-    fa = TreatingApi()
-    fa.sending_to_api(ff.sentence)
-    fa.search_around(fa.lat, fa.lng)
-    fa.search_pageid(fa.pageid)
-    fe = Papybot()
-    fe.transformed_data_into_json_results(fa.lat, fa.lng)
-    print(fe.sending_gps_coordinate)
-main()
+    print(ff.sentence)
+if __name__ == "__main":
+    main()
