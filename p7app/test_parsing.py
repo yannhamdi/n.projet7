@@ -1,20 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
 
-import requests
 
-
-import json
 
 
 from p7app import parsing
-
-
-
-
-
-
-
 
 
 #test if our function send a sentence in lower case

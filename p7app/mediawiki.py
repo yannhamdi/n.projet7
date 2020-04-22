@@ -5,11 +5,11 @@ import requests
 
 import json
 
-from random import *
+from random import randint
 
 
 
-class mediawikiapi:
+class MediaWikiApi:
     "class that calls wikipedia api"
     def __init__(self):
         self.url_2 = "https://fr.wikipedia.org/w/api.php"
@@ -54,3 +54,11 @@ class mediawikiapi:
             print(self.fullurl)
         except:
             print("La requête a donné un statut d'erreur")
+
+
+
+def main() :
+    kk = MediaWikiApi()
+    kk.search_around(48.12233,13.54565)
+    print(kk.pageid)
+main()
