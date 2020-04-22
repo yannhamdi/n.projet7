@@ -29,7 +29,8 @@ class MediaWikiApi:
             self.geosearch_data = self.response.json()
             self.nbre = len(self.geosearch_data["query"]["geosearch"])
             self.choice = ((randint(0, self.nbre)) - 1)
-            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']    
+            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']
+            return self.pageid   
         except:
             print("La requête a donné un statut d'erreur")      
     def search_pageid(self, pageid):
