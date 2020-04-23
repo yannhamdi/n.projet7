@@ -11,9 +11,34 @@ from p7app import mediawiki
 
 def test_transformed_gps_into_json_results():
     gps = pybot.PapyBot()
+    sentence = "OPENCLASSROOM"
+    adresse = "fausse adresse"
     lat = 48
     lng = 50
-    assert gps.transformed_gps_into_json_results(lat,lng) == {"latitude": lat , "longitude": lng}
+    par = parsing.SentenceParse()
+    assert par.returning_cleaned_sentence(sentence) == "openclassroom"   
+    def test_sending_to_api_handles_correct_result(monkeypatch):
+        class MockGet:
+            def __init__(self,url):
+                pass
+
+            def json(self):
+	            return {
+	                  "results": [{"formatted_address": adresse, "geometry": { "location":
+	                  { "lat": lat, "lng": lng}
+
+	                  }}]
+	}
+        # patching the request.get to mock the api call
+        monkeypatch.setattr("requests.get", MockGet)
+        # we call the method sending_to_api
+        pi = googlemapapi.TreatingApi()
+        pi.sending_to_api("petit test avec mock")
+        # Assert on the result's sending_to_api method
+        assert pi.address == FAKE_ADDRESS
+        assert pi.lat == FAKE_LAT
+        assert pi.lng == FAKE_LNG  
+        assert gps.transformed_gps_into_json_results(sentence) == {"adresse": adresse, "latitude": lat , "longitude": lng}
 
 def test_transformed_pageid_into_json(monkeypatch):
     F_LAT = 49.0

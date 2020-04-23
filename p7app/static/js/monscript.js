@@ -8,7 +8,9 @@ form.addEventListener("submit", function(event){
 fetch("/sendingServer", {
 	 method: "POST",
 	 body: new FormData(form)
+
 });
+
 
 
 

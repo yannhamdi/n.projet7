@@ -6,8 +6,12 @@ import json
 
 from random import randint
 
+from p7app import parsing
+
+from p7app import googlemapapi
 
 from p7app import mediawiki
+
 
 
 
@@ -19,11 +23,17 @@ class PapyBot():
         
         
         
-    def transformed_gps_into_json_results(self, lat, lng):
-        self.a = lat
-        self.b = lng
+    def transformed_gps_into_json_results(self, sentence):
+        self.sentence = sentence
+        sen = parsing.SentenceParse()
+        sen.returning_cleaned_sentence(self.sentence)
+        goo = googlemapapi.TreatingApi()
+        goo.sending_to_api(sen.sentence)
+        self.gps_lat = goo.lat
+        self.gps_lng = goo.lng
+        self.gps_adress = goo.address
         "we are going to encode our answers from others classes to an answers which can be treated by js"
-        self.sending_gps_coordinate = {"latitude": self.a , "longitude": self.b}
+        self.sending_gps_coordinate = {"addresse": self.gps_adress, "latitude": self.gps_lat , "longitude": self.gps_lng}
         return self.sending_gps_coordinate
 
 
@@ -49,8 +59,6 @@ class PapyBot():
         return self.data_treated
         
         
-        
-
-
+ 
 if __name__ == "__main__":
     main()

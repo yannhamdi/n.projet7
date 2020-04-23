@@ -27,7 +27,9 @@ class TreatingApi:
             self.address = (self.response_json["results"][0]["formatted_address"])
             self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])  #we select our latitude
             self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"]) #we select our longitude
-            print(self.address)
+            return self.address
+            return self.lat
+            return self.lng
         except:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de chose mais sur ce coup je ne vois pas ce que tu veux dire.")
 
