@@ -4,7 +4,7 @@ import requests
 
 import json
 
-from p7app.config import keyapi
+from p7app.settings import keyapi
 
 
 
