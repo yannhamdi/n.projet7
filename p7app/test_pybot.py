@@ -40,7 +40,6 @@ def test_transformed_pageid_into_json(monkeypatch):
     
 
 def test_transformed_info_js(monkeypatch):
-    "we mock our method search_page_id"
     pageid = 56876948
     class MockReturning():
         def __init__(self, url, params = {"format": "json", # format de la réponse
@@ -58,6 +57,13 @@ def test_transformed_info_js(monkeypatch):
             }}
     monkeypatch.setattr("requests.get", MockReturning)
     pi = mediawiki.MediaWikiApi()
-    pi.search_pageid(pageid)
-    assert pi.extract == 'ceci est un mock api'
-    assert pi.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
+    pe = pybot.PapyBot()
+    pe.transformed_info_js(pageid)
+    assert pe.info == 'ceci est un mock api'
+    assert pe.url == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
+
+def test_returning_dictionnary():
+    final = pybot.PapyBot()
+    info = "ceci est un test"
+    url = "https:XXXXXXXXXXXX.fr"
+    assert final.returning_dictionnary(info, url) == {"inquiries": info , "web link": url}

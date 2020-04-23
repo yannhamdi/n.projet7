@@ -40,17 +40,17 @@ class PapyBot():
         ab = mediawiki.MediaWikiApi()
         ab.search_pageid(self.pageidjs)
         self.info = ab.extract
-        self.url = ab.fullurl
+        self.url = ab.fullurl  
 
-
+    def returning_dictionnary(self, informartion, link_url):
+        self.informartion = informartion
+        self.link_url = link_url
+        self.data_treated = {"inquiries": self.informartion, "web link": self.link_url }
+        return self.data_treated
         
         
         
 
-def main():
-    re = PapyBot()
-    re.transformed_pageid_into_json(45.6778,18.5443)
-    print(re.pageid_for_js)
-    re.transformed_info_js(re.pageid_for_js)
-    print(re.info)
-main()
+
+if __name__ == "__main__":
+    main()

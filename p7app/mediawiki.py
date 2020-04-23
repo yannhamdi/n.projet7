@@ -51,15 +51,12 @@ class MediaWikiApi:
             self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
             self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
             print("T'ai je déjà parler de ce que l'on pouvait trouver dans les alentours de ce que tu me demandes?")
-            print(self.extract)
-            print(self.fullurl)
+            return self.extract
+            return self.fullurl
         except:
             print("La requête a donné un statut d'erreur")
 
 
 
-def main() :
-    kk = MediaWikiApi()
-    kk.search_around(48.12233,13.54565)
-    print(kk.pageid)
-main()
+if __name__ == "__main__":
+    main()

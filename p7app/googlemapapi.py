@@ -34,10 +34,6 @@ class TreatingApi:
 
 
 
-def main():
-    ff = TreatingApi()
-    text = "openclassroom"
-    ff.sending_to_api(text)
 if __name__ == "__main__":
     main()
 
