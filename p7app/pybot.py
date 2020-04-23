@@ -15,6 +15,7 @@ class PapyBot():
     "class that will send all the informartion to our webpage"
     def __init__(self):
         self.sending_gps_coordinate = {}
+        self.data_treated = {}
         
         
         
@@ -33,6 +34,14 @@ class PapyBot():
         ap = mediawiki.MediaWikiApi()
         ap.search_around(lat, lng)
         self.pageid_for_js = ap.pageid
+    
+    def transformed_info_js(self, pageid):
+        self.pageidjs = pageid
+        ab = mediawiki.MediaWikiApi()
+        ab.search_pageid(self.pageidjs)
+        self.info = ab.extract
+        self.url = ab.fullurl
+
 
         
         
@@ -41,4 +50,7 @@ class PapyBot():
 def main():
     re = PapyBot()
     re.transformed_pageid_into_json(45.6778,18.5443)
+    print(re.pageid_for_js)
+    re.transformed_info_js(re.pageid_for_js)
+    print(re.info)
 main()
