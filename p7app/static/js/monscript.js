@@ -2,10 +2,11 @@
 
 
 let form = document.querySelector("#question-form");
+
 form.addEventListener("submit", function(event){
 	event.preventDefault();
-	console.log("ok")
-
+	console.log("ok");
+	
 
 
     fetch("/sendingServer", {
@@ -13,12 +14,11 @@ form.addEventListener("submit", function(event){
 	     body: new FormData(form)
 
 })
-    .then(response => response.json())
-    .catch(error => console.log(error));
+    .then(
+    response =>{ response.json()})
     
+    .catch(error => console.log(error));
+
 
 })
-console.log(response);
-
-
-
+   
