@@ -14,7 +14,7 @@ form.addEventListener("submit", function(event){
 	event.preventDefault();
 	postFormData("/sendingServer",  new FormData(form))
 	.then(response => {
-		console.log(response)
+		console.log(response.latitude)
     })
 })
 
