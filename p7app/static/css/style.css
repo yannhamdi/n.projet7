@@ -64,7 +64,12 @@ input
 {
 	background-color: aqua ;
 }
-
+section h5
+{
+	color: black;
+	font-size: 15px;
+	font-style: normal;
+}
 
 @media screen and (max-width: 1024px)
 {

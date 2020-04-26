@@ -15,7 +15,7 @@ form.addEventListener("submit", function(event){
 	var nom = document.getElementById("question").value;
 	console.log(nom);
 	let b = document.querySelector("#question-form");
-	var newElt = document.createElement("p");
+	var newElt = document.createElement("h5");
 	newElt.textContent = nom;
     b.appendChild(newElt);
 
