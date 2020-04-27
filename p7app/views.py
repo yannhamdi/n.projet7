@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 
-
 from . import parsing as par
 
 from . import googlemapapi as goo
 
 from . import pybot as py 
+
+import os
 
 
 app = Flask(__name__)
@@ -16,7 +17,7 @@ app.config.from_object('config')
 @app.route('/')
 @app.route('/p7homepage/')
 def index():
-    return render_template("p7homepage.html", api_key = app.config['api_key'])
+    return render_template("p7homepage.html", api_key = os.environ.get('api_key'))
 
 
 @app.route('/sendingServer', methods=["POST"])
