@@ -16,7 +16,7 @@ app.config.from_object('config')
 @app.route('/')
 @app.route('/p7homepage/')
 def index():
-    return render_template("p7homepage.html")
+    return render_template("p7homepage.html", api_key = app.config['api_key'])
 
 
 @app.route('/sendingServer', methods=["POST"])
