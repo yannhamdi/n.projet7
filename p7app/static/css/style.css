@@ -46,7 +46,12 @@ form
 	font-size:30px;
 
 }
-
+#map
+{
+	height :100%;
+	margin: 0;
+	padding: 0;
+}
 footer
 {
 	color: red;
