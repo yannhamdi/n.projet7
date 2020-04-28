@@ -15,7 +15,7 @@
         <h1> Pybot à votre service!!! </h1>
         <form id="question-form">
     <p>
-        <label for="Your question">Votre demande à Pybot... : </label>
+        <label for="Your question">Votre demande à Pybot...: </label>
         <input type="text" name="question" id="question" placeholder="Posez votre question" size="300" width="50" />
         <input type="submit" value="Envoyer" />
     </p>
@@ -26,8 +26,9 @@
        <a href="https://github.com/yannhamdi">Lien GitHub</a>
 
     </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap"async defer ></script>
      <script type="text/javascript" src="{{url_for('static', filename='js/monscript.js')}}"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?key={{api_key}}%callback=initMap"
-     async defer ></script>
+     
+     
     </body>
 </html>

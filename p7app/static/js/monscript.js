@@ -24,14 +24,14 @@ form.addEventListener("submit", function(event){
 	.then(response => {
 		console.log(response.latitude)
     })
-    .then(
-    	function initMap(){
+    .then(function initMap(){
+
     		map = new google.maps.Map(document.getElementById('map'),{
     			center :{lat: response.latitude, lng : response.longitude}, 
     			zoom: 8
     		});
-    	}
-    	)
+    initMap();
+    	
 })
 
 
