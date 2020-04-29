@@ -21,17 +21,19 @@ form.addEventListener("submit", function(event){
     b.appendChild(newElt);
 
 	postFormData("/sendingServer",  new FormData(form))
-	function initMap(parentElt){
+	.then(
+	       function initMap(parentElt){
+         console.log("lololo")
     	 let mapElt = document.createElement("div");
          mapElt.classList.add("map");
          let map = new google.maps.Map(mapElt,{
         center :{lat: response.latitude, lng : response.longitude}, 
     	zoom: 8
     		})();
-        parentElt.appendChild(mapElt);
+        b.appendChild(mapElt);
 
     
-}
+})
 
 })
     
