@@ -93,4 +93,4 @@ def test_returning_dictionnary():
     longi = 56.6059
     info = "ceci est un test"
     url = "https:XXXXXXXXXXXX.fr"
-    assert final.returning_dictionnary(info, url, adresses, lati, longi) == {"addresse": adresses, "latitude": lati, "longitude": longi, "inquiries": info, "web link": url }
+    assert final.returning_dictionnary(info, url, adresses, lati, longi) == {"addresse": adresses, "latitude": lati, "longitude": longi, "inquiries": info, "weblink": url }
