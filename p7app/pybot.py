@@ -18,7 +18,6 @@ from p7app import mediawiki
 class PapyBot():
     "class that will send all the informartion to our webpage"
     def __init__(self):
-        self.sending_gps_coordinate = {}
         self.data_treated = {}
         
         
@@ -32,9 +31,6 @@ class PapyBot():
         self.gps_lat = goo.lat
         self.gps_lng = goo.lng
         self.gps_adress = goo.address
-        "we are going to encode our answers from others classes to an answers which can be treated by js"
-        self.sending_gps_coordinate = {"addresse": self.gps_adress, "latitude": self.gps_lat , "longitude": self.gps_lng}
-        return self.sending_gps_coordinate
 
 
     def transformed_pageid_into_json(self, lat, lng):
@@ -52,13 +48,17 @@ class PapyBot():
         self.info = ab.extract
         self.url = ab.fullurl  
 
-    def returning_dictionnary(self, informartion, link_url):
+    def returning_dictionnary(self, informartion, link_url,gps_adress, latitude, longitude):
+        self.gps_adress = gps_adress
+        self.latitude = latitude
+        self.longitude = longitude
         self.informartion = informartion
         self.link_url = link_url
-        self.data_treated = {"inquiries": self.informartion, "web link": self.link_url }
+        self.data_treated = {"addresse": self.gps_adress, "latitude": self.latitude, "longitude": self.longitude , "inquiries": self.informartion, "web link": self.link_url }
         return self.data_treated
         
         
- 
+
+    
 if __name__ == "__main__":
     main()

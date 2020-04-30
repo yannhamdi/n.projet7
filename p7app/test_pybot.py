@@ -38,7 +38,6 @@ def test_transformed_gps_into_json_results():
         assert pi.address == FAKE_ADDRESS
         assert pi.lat == FAKE_LAT
         assert pi.lng == FAKE_LNG  
-        assert gps.transformed_gps_into_json_results(sentence) == {"adresse": adresse, "latitude": lat , "longitude": lng}
 
 def test_transformed_pageid_into_json(monkeypatch):
     F_LAT = 49.0
@@ -89,6 +88,9 @@ def test_transformed_info_js(monkeypatch):
 
 def test_returning_dictionnary():
     final = pybot.PapyBot()
+    adresses = "ceci est une adresse"
+    lati= 34.9090
+    longi = 56.6059
     info = "ceci est un test"
     url = "https:XXXXXXXXXXXX.fr"
-    assert final.returning_dictionnary(info, url) == {"inquiries": info , "web link": url}
+    assert final.returning_dictionnary(info, url, adresses, lati, longi) == {"addresse": adresses, "latitude": lati, "longitude": longi, "inquiries": info, "web link": url }

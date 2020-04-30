@@ -25,7 +25,10 @@ def sending_question():
     user_question = request.form["question"]
     client_treatment = py.PapyBot()
     client_treatment.transformed_gps_into_json_results(user_question)
-    response = client_treatment.sending_gps_coordinate
+    client_treatment.transformed_pageid_into_json(client_treatment.gps_lat, client_treatment.gps_lng)
+    client_treatment.transformed_info_js(client_treatment.pageid_for_js)
+    client_treatment.returning_dictionnary(client_treatment.info, client_treatment.url, client_treatment.gps_adress, client_treatment.lat, client_treatment.lng)
+    response = client_treatment.data_treated
     print(response)
     return jsonify(response)
 
