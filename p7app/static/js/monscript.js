@@ -16,24 +16,28 @@ function initMap(latitude, longitude){
          mapElt.classList.add("map");
          let map = new google.maps.Map(mapElt,{
          center : myLatLng,
-         zoom: 8
-    	});	
+         zoom: 12
+    	})
+        
         b.appendChild(mapElt);
+        var marker = new google.maps.Marker({position: myLatLng, map: map});
     }
 function processPotAnswer(response){
 	var nom = document.getElementById("question").value;
 	var newElt = document.createElement("h5");
 	newElt.textContent = nom ;
     b.appendChild(newElt);
-    initMap(response.latitude, response.longitude);
+    let latitude = response.latitude;
+    let longitude = response.longitude;
+    initMap(latitude, longitude);
 }
 
 form.addEventListener("submit", function(event){
 	event.preventDefault();
 	
 	postFormData("/sendingServer",  new FormData(form))
-	.then(response => console.log(response.latitude)
-	       )
+	.then(response => processPotAnswer(response)
+	       );
 })
 
 
