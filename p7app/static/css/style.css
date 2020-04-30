@@ -75,14 +75,24 @@ input
 {
 	background-color: aqua ;
 }
-section h5
+.chat
 {
 	color: black;
 	font-size: 15px;
 	font-style: normal;
 	background-color: white;
+	width: 60% ;
+	height: 20px;
 }
-
+.answer
+{      color: black;
+	font-size: 15px;
+	font-style: normal;
+	background-color: white;
+	width: 60% ;
+	height: auto;
+ 
+}
 @media screen and (max-width: 1024px)
 {
 	header

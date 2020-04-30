@@ -54,7 +54,7 @@ class PapyBot():
         self.longitude = longitude
         self.informartion = informartion
         self.link_url = link_url
-        self.data_treated = {"addresse": self.gps_adress, "latitude": self.latitude, "longitude": self.longitude , "inquiries": self.informartion, "web link": self.link_url }
+        self.data_treated = {"addresse": self.gps_adress, "latitude": self.latitude, "longitude": self.longitude , "inquiries": self.informartion, "weblink": self.link_url }
         return self.data_treated
         
         

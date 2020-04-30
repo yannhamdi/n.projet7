@@ -25,11 +25,24 @@ function initMap(latitude, longitude){
 function processPotAnswer(response){
 	var nom = document.getElementById("question").value;
 	var newElt = document.createElement("h5");
+	newElt.classList.add("chat")
 	newElt.textContent = nom ;
     b.appendChild(newElt);
+    var adAsked = document.createElement("h5");
+    adAsked.classList.add("chat")
+    adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
+    b.appendChild(adAsked);
+    var infoAsked = document.createElement("h5");
+    infoAsked.classList.add("answer")
+    infoAsked.textContent = "T'ai je dèja raconté mon petit loup ce qui se trouve aux alentours? " + response.inquiries ;
+    b.appendChild(infoAsked);
     let latitude = response.latitude;
     let longitude = response.longitude;
     initMap(latitude, longitude);
+    var urlAsked = document.createElement("h5");
+    urlAsked.classList.add("answer")
+    urlAsked.textContent = "Si tu souhaites en savoir plus, je t'invite à visiter la page mon petit chat: " + response.weblink ;
+    b.appendChild(urlAsked);
 }
 
 form.addEventListener("submit", function(event){

@@ -29,7 +29,6 @@ def sending_question():
     client_treatment.transformed_info_js(client_treatment.pageid_for_js)
     client_treatment.returning_dictionnary(client_treatment.info, client_treatment.url, client_treatment.gps_adress, client_treatment.lat, client_treatment.lng)
     response = client_treatment.data_treated
-    print(response)
     return jsonify(response)
 
 
