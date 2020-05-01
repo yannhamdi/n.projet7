@@ -9,25 +9,32 @@
     </head>
 
     <body>  
-    <header>
-        </br></brr> <div class="catchphrase"  >Bienvenue dans le monde des anciens... </div>
-    </header>
-    <section>
-        <h1> Pybot à votre service!!! </h1>
-        <form id="question-form">
-    <p>
-        <label for="Your question">Votre demande à Pybot...: </label>
-        <input type="text" name="question" id="question" placeholder="Posez votre question" size="300" width="50" />
-        <input type="submit" value="Envoyer" />
-    </p>
-</form>
-    </section>
-    <footer>
-        <h1> Hamdi Yann </h1>
-       <a href="https://github.com/yannhamdi">Lien GitHub</a>
+        <header>
+            </br></brr> <div class="catchphrase"  >Bienvenue dans le monde des anciens... </div>
+        </header>
+            <div id="conteneur">
+        
+         <section>
+            <form id="question-form">
+                <p>
+                    <label for="Your question">Votre demande à Pybot...: </label>
+                    <input type="text" name="question" id="question" placeholder="Posez votre question" size="300" width="50" />
+                    <input type="submit" value="Envoyer" />
+                </p>
 
-    </footer>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{api_key}}" ></script>
+            </form>
+
+            
+         </section>
+        
+            </div>
+        <footer>
+            <h1> Hamdi Yann </h1>
+            <a href="https://github.com/yannhamdi">Lien GitHub</a>
+
+        </footer>
+
+     <script src="https://maps.googleapis.com/maps/api/js?key={{api_key}}" ></script>
      <script type="text/javascript" src="{{url_for('static', filename='js/monscript.js')}}"></script>
      
      

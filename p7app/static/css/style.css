@@ -1,8 +1,12 @@
+
+
+
 body
 {
 	background-image: url(/static/img/fond.jpg);
-	display: flex;
-	flex-direction: column;
+    height : 100vh;	
+    
+
 
 }
 
@@ -14,12 +18,17 @@ header
 	background-image: url(/static/img/robot.png);
 	background-repeat: repeat;
 	background-position: center;
-	height:20vh;
-    
+	flex-grow: 0;
+	
 
 	
 }
+#conteneur
+{
+	display: flex;
+	flex-direction: column;
 
+}
 
 .catchphrase
 {
@@ -41,7 +50,8 @@ section
 {
 	color: grey;
 	font-style: oblique;
-	height: 60vh;
+	display: flex;
+	flex-grow: 1;
 
 }
 form
@@ -54,22 +64,20 @@ form
 	height :200px;
 	width : 50%;
 	border-radius: 10px;
-	align-items: center;
-	margin-left: auto;
-    margin-right: auto;
 }
 footer
 {
 	color: red;
+    text-align: center;
 	font-size :10px;
-	text-align: center;
-	height: 20vh;
-
-}
-	
-footer h1 
+	flex-grow: 0;
+	margin-top: 600px;
+}	
+.pied
 {
-	margin-top: 90px
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 input
 {
@@ -117,7 +125,7 @@ input
 {
 	header
 	{
-		height: auto;
+		height: ;
 		width: auto;
 
 	}

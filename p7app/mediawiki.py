@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
 
-import requests
-
 import json
+
+import requests
 
 from random import randint
 
@@ -13,8 +13,6 @@ class MediaWikiApi:
     "class that calls wikipedia api"
     def __init__(self):
         self.url_2 = "https://fr.wikipedia.org/w/api.php"
-
-
     def search_around(self, lat, lng):
         "function that tells us stories about a place near"
         self.params = {
@@ -24,7 +22,7 @@ class MediaWikiApi:
             "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
             "gscoord": f"{lat}|{lng}" # coordonnées GPS séparées par une barre verticale
                 }
-        self.response = requests.get(self.url_2, params = self.params)
+        self.response = requests.get(self.url_2, params=self.params)
         try:
             self.geosearch_data = self.response.json()
             self.nbre = len(self.geosearch_data["query"]["geosearch"])
@@ -46,7 +44,7 @@ class MediaWikiApi:
     "pageids": self.pageid
 }
         try:
-            self.response2 = requests.get(self.url_2, params = self.param)
+            self.response2 = requests.get(self.url_2, params=self.param)
             self.info_search = self.response2.json()
             self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
             self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
