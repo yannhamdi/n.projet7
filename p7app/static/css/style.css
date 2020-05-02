@@ -101,46 +101,20 @@ input
 	height: auto;
  
 }
-@media screen and (max-width: 1024px)
+@media screen and (max-width: 600px)
 {
 	header
 	{
-		height: auto;
-		width: auto;
+		width: 100px;
 	}
 	section
 	{
-		height: auto;
-		width: auto;
+
+		width: 424px;
 
 	}
 	footer
 	{
-		height: auto;
-		width: auto
+		width: 100px
 	}
 }
-
-@media all and (max-device-width: 480px)
-{
-	header
-	{
-		height: ;
-		width: auto;
-
-	}
-	section
-	{
-		height: auto;
-		width: auto;
-
-	}
-	footer
-	{
-		height: auto;
-		width: auto
-	}
-   
-   }
-}
-
