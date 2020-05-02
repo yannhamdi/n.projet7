@@ -11,7 +11,6 @@ function postFormData(url, data){
 }
 function initMap(latitude, longitude){
     	let mapElt = document.createElement("div");
-    	
     	let myLatLng = {lat: latitude, lng: longitude};
          mapElt.classList.add("map");
          let map = new google.maps.Map(mapElt,{
@@ -44,14 +43,23 @@ function processPotAnswer(response){
     urlAsked.textContent = "Si tu souhaites en savoir plus, je t'invite à visiter la page mon petit chat: " + response.weblink ;
     b.appendChild(urlAsked);
 }
+function sendingErrorMessage(){
+    var messageError = document.createElement("h5");
+    messageError.classList.add("chat");
+    messageError.textContent = "Je sais que je suis un dinosaure et que je connais énormèment de choses mais là je dois avouer que tu m'as posé une colle... Désolé mon petit canard";
+    b.appendChild(messageError);
 
+
+}
 form.addEventListener("submit", function(event){
 	event.preventDefault();
 	
 	postFormData("/sendingServer",  new FormData(form))
 	.then(response => processPotAnswer(response)
-	       );
+	       )
+	.catch(error => sendingErrorMessage());
 })
+
 
 
 
