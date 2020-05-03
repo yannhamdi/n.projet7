@@ -1,26 +1,29 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
-
-import json
-
-import requests
+" module that deal with requesting with the wikipedia api"
 
 from random import randint
 
-
+import requests
 
 class MediaWikiApi:
     "class that calls wikipedia api"
     def __init__(self):
         self.url_2 = "https://fr.wikipedia.org/w/api.php"
+        self.params = {}
+        self.response = ""
+        self.geosearch_data = ""
+        self.pageid = 0
     def search_around(self, lat, lng):
         "function that tells us stories about a place near"
         self.params = {
-            "format": "json", # format de la réponse
-            "action": "query", # action à réaliser
-            "list": "geosearch", # méthode de recherche
-            "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
-            "gscoord": f"{lat}|{lng}" # coordonnées GPS séparées par une barre verticale
+            "format": "json", # format of the response
+            "action": "query", # action requiered
+            "list": "geosearch", # research method
+            # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
+            "gsradius": 10000, 
+            # coordonnées GPS séparées par une barre verticale
+            "gscoord": f"{lat}|{lng}" 
                 }
         self.response = requests.get(self.url_2, params=self.params)
         try:
@@ -53,8 +56,5 @@ class MediaWikiApi:
             return self.fullurl
         except:
             print("La requête a donné un statut d'erreur")
-
-
-
 if __name__ == "__main__":
     main()
