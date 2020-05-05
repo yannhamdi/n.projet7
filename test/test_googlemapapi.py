@@ -17,8 +17,9 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     FAKE_LNG = 3.0
     # Defining the mock for requests.get()
     class MockGet:
-        def __init__(self,url):
+        def __init__(self,url, params = {"address": FAKE_ADDRESS, "key": 9584833}):
             pass
+            
 
         def json(self):
 	            return {

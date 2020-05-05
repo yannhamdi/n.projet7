@@ -10,7 +10,7 @@ class TreatingApi:
     "class that will send a request to google map api"
     def __init__(self):
         "we initialize what is necessary for our requests"
-        self.url_1 = "https://maps.googleapis.com/maps/api/geocode/json?address="
+        self.url_1 = "https://maps.googleapis.com/maps/api/geocode/json?parameters"
         self.sentence = ""
         self.response = ""
         self.url = ""
@@ -21,8 +21,8 @@ class TreatingApi:
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)
-        self.url = self.url_1 + self.sentence + "&key=" + keyapi
-        self.response = requests.get(self.url)
+        self.params = {"address": self.sentence, "key": keyapi}
+        self.response = requests.get(self.url_1, params=self.params)
         try:
             self.response_json = self.response.json()
             #we select the address
@@ -37,6 +37,11 @@ class TreatingApi:
         except:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de \
                 chose mais sur ce coup je ne vois pas ce que tu veux dire.")
+
+def main():
+    po =TreatingApi()
+    text = "openclassroom"
+    po.sending_to_api(text)
 if __name__ == "__main__":
     main()
  

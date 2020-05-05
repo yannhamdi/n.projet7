@@ -48,8 +48,7 @@ def test_search_pageid_correct(monkeypatch):
     monkeypatch.setattr("requests.get", MockReturning)
     pi = mediawiki.MediaWikiApi()
     pi.search_pageid(pageid)
-    assert pi.extract == 'ceci est un mock api'
-    assert pi.fullurl == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
+    assert pi.dictionnary_search == ['ceci est un mock api', 'https://fr.wikipedia.org/wiki/Academy_of_Art_University']
     
    
 
