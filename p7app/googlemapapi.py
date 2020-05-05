@@ -19,6 +19,7 @@ class TreatingApi:
         self.lat = 0
         self.lng = 0
         self.dictio_coord = []
+        self.params = {}
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)
@@ -39,11 +40,6 @@ class TreatingApi:
         except:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de \
                 chose mais sur ce coup je ne vois pas ce que tu veux dire.")
-
-def main():
-    po =TreatingApi()
-    text = "openclassroom"
-    po.sending_to_api(text)
 if __name__ == "__main__":
     main()
  

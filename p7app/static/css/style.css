@@ -3,7 +3,6 @@
 
 body
 {
-	background-image: url(/static/img/fond.jpg);
     height : 100vh;	
     
 
@@ -25,8 +24,10 @@ header
 }
 #conteneur
 {
-	display: flex;
-	flex-direction: column;
+	background-color: white;
+	margin: auto;
+	width: auto;
+	margin-left: auto;
 
 }
 
@@ -89,7 +90,7 @@ input
 	font-size: 15px;
 	font-style: normal;
 	background-color: white;
-	width: 60% ;
+	width: auto ;
 	height: 20px;
 }
 .answer
@@ -97,24 +98,8 @@ input
 	font-size: 15px;
 	font-style: normal;
 	background-color: white;
-	width: 60% ;
+	width: auto;
 	height: auto;
  
 }
-@media screen and (max-width: 600px)
-{
-	header
-	{
-		width: 100px;
-	}
-	section
-	{
 
-		width: 424px;
-
-	}
-	footer
-	{
-		width: 100px
-	}
-}

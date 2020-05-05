@@ -38,9 +38,12 @@ function processPotAnswer(response){
     let latitude = response.latitude;
     let longitude = response.longitude;
     initMap(latitude, longitude);
-    var urlAsked = document.createElement("h5");
-    urlAsked.classList.add("answer")
-    urlAsked.textContent = "Si tu souhaites en savoir plus, je t'invite à visiter la page mon petit chat: " + response.weblink ;
+    var urlAsked = document.createElement("a");
+    var linkText = document.createTextNode(response.weblink)
+    urlAsked.appendChild(linkText);
+    urlAsked.classList.add("answer");
+    urlAsked.title = "lien" ;
+    urlAsked.href = response.weblink ;
     b.appendChild(urlAsked);
 }
 function sendingErrorMessage(){
