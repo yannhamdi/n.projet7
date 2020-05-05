@@ -10,21 +10,13 @@ class MediaWikiApi:
     """class that calls wikipedia api"""
     def __init__(self):
         self.url_2 = "https://fr.wikipedia.org/w/api.php"
-        self.params = {}
-        self.param = {}
-        self.response = ""
-        self.geosearch_data = ""
         self.pageid = 0
         self.dictionnary_search = []
-        self.response2 = ""
-        self.info_search = ""
         self.extract = ""
         self.fullurl = ""
-        self.nbre = 0
-        self.choice = 0
     def search_around(self, lat, lng):
         """function that tells us stories about a place near"""
-        self.params = {
+        params = {
             "format": "json", # format of the response
             "action": "query", # action requiered
             "list": "geosearch", # research method
@@ -33,19 +25,19 @@ class MediaWikiApi:
             # coordonnées GPS séparées par une barre verticale
             "gscoord": f"{lat}|{lng}"
                 }
-        self.response = requests.get(self.url_2, params=self.params)
+        response = requests.get(self.url_2, params=params)
         try:
-            self.geosearch_data = self.response.json()
-            self.nbre = len(self.geosearch_data["query"]["geosearch"])
-            self.choice = ((randint(0, self.nbre)) - 1)
-            self.pageid = self.geosearch_data["query"]["geosearch"][self.choice]['pageid']
+            geosearch_data = response.json()
+            nbre = len(geosearch_data["query"]["geosearch"])
+            choice = ((randint(0, nbre)) - 1)
+            self.pageid = geosearch_data["query"]["geosearch"][choice]['pageid']
             return self.pageid
         except:
             print("La requête a donné un statut d'erreur")
     def search_pageid(self, pageid):
         """method that look nearby our place"""
         self.pageid = pageid
-        self.param = params = {
+        param = {
             "format": "json", # format de la réponse
             "action": "query", # action à effectuer
             "prop": "extracts|info", # Choix des propriétés pour les pages requises
@@ -56,10 +48,10 @@ class MediaWikiApi:
             "pageids": self.pageid
         }
         try:
-            self.response2 = requests.get(self.url_2, params=self.param)
-            self.info_search = self.response2.json()
-            self.extract = self.info_search['query']['pages'][str(self.pageid)]['extract']
-            self.fullurl = self.info_search['query']['pages'][str(self.pageid)]['fullurl']
+            response2 = requests.get(self.url_2, params=param)
+            info_search = response2.json()
+            self.extract = info_search['query']['pages'][str(self.pageid)]['extract']
+            self.fullurl = info_search['query']['pages'][str(self.pageid)]['fullurl']
             print("T'ai je déjà parler de ce que l'on pouvait trouver \
                     dans les alentours de ce que tu me demandes?")
             self.dictionnary_search.append(self.extract)
