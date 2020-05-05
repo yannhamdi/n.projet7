@@ -34,6 +34,4 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     pi = googlemapapi.TreatingApi()
     pi.sending_to_api("petit test avec mock")
     # Assert on the result's sending_to_api method
-    assert pi.address == FAKE_ADDRESS
-    assert pi.lat == FAKE_LAT
-    assert pi.lng == FAKE_LNG
+    assert pi.dictio_coord == [FAKE_ADDRESS, FAKE_LAT, FAKE_LNG]

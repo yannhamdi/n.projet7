@@ -18,6 +18,7 @@ class TreatingApi:
         self.response_json = ""
         self.lat = 0
         self.lng = 0
+        self.dictio_coord = []
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         self.sentence = str(sentence)
@@ -31,9 +32,10 @@ class TreatingApi:
             self.lat = (self.response_json["results"][0]["geometry"]["location"]["lat"])
             #we select our longitude
             self.lng = (self.response_json["results"][0]["geometry"]["location"]["lng"])
-            return self.address
-            return self.lat
-            return self.lng
+            self.dictio_coord.append(self.address)
+            self.dictio_coord.append(self.lat)
+            self.dictio_coord.append(self.lng)
+            return self.dictio_coord
         except:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de \
                 chose mais sur ce coup je ne vois pas ce que tu veux dire.")
