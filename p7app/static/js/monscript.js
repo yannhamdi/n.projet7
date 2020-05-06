@@ -24,11 +24,11 @@ function initMap(latitude, longitude){
 function processPotAnswer(response){
 	var nom = document.getElementById("question").value;
 	var newElt = document.createElement("h5");
-	newElt.classList.add("chat")
+	newElt.classList.add("answer")
 	newElt.textContent = nom ;
     b.appendChild(newElt);
     var adAsked = document.createElement("h5");
-    adAsked.classList.add("chat")
+    adAsked.classList.add("answer")
     adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
     b.appendChild(adAsked);
     var infoAsked = document.createElement("h5");
@@ -38,8 +38,12 @@ function processPotAnswer(response){
     let latitude = response.latitude;
     let longitude = response.longitude;
     initMap(latitude, longitude);
+    var textChat = document.createElement("h5");
+    textChat.classList.add("answer");
+    textChat.textContent = "Mon petit lapin si tu en veux savoir plus, je t'invite à visiter la page wikipedia en visitant le lien ci dessous:";
+    b.appendChild(textChat);
     var urlAsked = document.createElement("a");
-    var linkText = document.createTextNode(response.weblink)
+    var linkText = document.createTextNode(response.weblink);
     urlAsked.appendChild(linkText);
     urlAsked.classList.add("answer");
     urlAsked.title = "lien" ;
@@ -48,7 +52,7 @@ function processPotAnswer(response){
 }
 function sendingErrorMessage(){
     var messageError = document.createElement("h5");
-    messageError.classList.add("chat");
+    messageError.classList.add("answer");
     messageError.textContent = "Je sais que je suis un dinosaure et que je connais énormèment de choses mais là je dois avouer que tu m'as posé une colle... Désolé mon petit canard";
     b.appendChild(messageError);
 
