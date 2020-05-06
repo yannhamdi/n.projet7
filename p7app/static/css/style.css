@@ -40,16 +40,16 @@ header
 
 }	
 
-section h1 
+main h1 
 {
-	color: grey;
+	color: black;
 	font-size: 40px;
 	font-style: italic;
 }
 
-section
+main
 {
-	color: grey;
+	color: black;
 	font-style: oblique;
 	display: flex;
 	flex-grow: 1;
@@ -82,19 +82,11 @@ footer
 }
 input
 {
-	background-color: aqua ;
-}
-.chat
-{
-	color: black;
-	font-size: 15px;
-	font-style: normal;
-	background-color: white;
-	width: auto ;
-	height: 20px;
+	background-color: white ;
 }
 .answer
-{      color: black;
+{      
+	color: black;
 	font-size: 15px;
 	font-style: normal;
 	background-color: white;
