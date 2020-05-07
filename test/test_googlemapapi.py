@@ -38,10 +38,12 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
 
 def test_sending_to_api_for_error(monkeypatch):
     """ we test the exceptions"""
+    status_code = 300
     RESULTS = "error"
     class Mockget:
         def __init__(self, url,params):
-            self.status_code = 404
+            self.status_code = status_code
+            self.status_code > 200
         def json(self):
             return RESULTS
     monkeypatch.setattr("requests.get", Mockget)
