@@ -50,3 +50,4 @@ def test_sending_to_api_for_error(monkeypatch):
     mo = googlemapapi.TreatingApi()
     mo.sending_to_api("petit test erreur")
     assert mo.result == RESULTS
+
