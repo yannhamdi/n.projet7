@@ -38,10 +38,3 @@ class TreatingApi:
                 chose mais sur ce coup je ne vois pas ce que tu veux dire.")
             self.result = "error"
             return self.result
-def main():
-    po = TreatingApi()
-    text = "openclassroom"
-    po.sending_to_api(text)
-    print(po.dictio_coord)
-main()
- 

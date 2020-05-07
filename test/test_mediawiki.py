@@ -41,7 +41,7 @@ def test_search_around_error_result(monkeypatch):
     monkeypatch.setattr("requests.get", Mockget)
     pi = mediawiki.MediaWikiApi()
     pi.search_around(F_LAT, F_LNG)
-    assert pi.result == RESULTS
+    assert pi.result_1 == RESULTS
 def test_search_pageid_correct(monkeypatch):
     "we mock our method search_page_id"
     pageid = 56876948

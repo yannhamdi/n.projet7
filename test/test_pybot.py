@@ -66,7 +66,7 @@ def test_transformed_pageid_into_json(monkeypatch):
             "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
             "gscoord": f"{F_LAT}|{F_LNG}" # coordonnées GPS séparées par une barre verticale
                 }):
-            self.status_code = 200
+            self.status_code = "Response [200]"
 
         def json(self):
 	        return {
@@ -78,10 +78,10 @@ def test_transformed_pageid_into_json(monkeypatch):
     pa.transformed_pageid_into_json(59.79685,34.0984)
     assert pa.pageid_for_js == '9845754'
 
-def test_transformed_pageid_into_json(monkeypatch):
+def test_transformed_pageid_into_json_error(monkeypatch):
     F_LAT = 49.0
     F_LNG = 3.0
-    class MockReturn():
+    class Mock():
         def __init__(self, url, params = {
             "format": "json", # format de la réponse
             "action": "query", # action à réaliser
@@ -89,15 +89,15 @@ def test_transformed_pageid_into_json(monkeypatch):
             "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
             "gscoord": f"{F_LAT}|{F_LNG}" # coordonnées GPS séparées par une barre verticale
                 }):
-            self.status_code = 300
-            self.status_code > 300
+            self.status_code = "Response [300]"
+            self.status_code != "Response [200]"
         def json(self):
             return "error"
-    monkeypatch.setattr("requests.get", MockReturn)
-    pi = mediawiki.MediaWikiApi()
+    monkeypatch.setattr("requests.get", Mock)
+    me = mediawiki.MediaWikiApi()
     pa = pybot.PapyBot()
     pa.transformed_pageid_into_json(59.79685,34.0984)
-    assert pi.result == "error"
+    assert pa.result == "error"
 
    
 
@@ -111,7 +111,7 @@ def test_transformed_info_js(monkeypatch):
                       "exchars": 500, # Nombre de caractères à retourner
                        "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
                        "pageids": pageid}):
-            self.status_code = 200
+            self.status_code = "Response [200]"
         def json(self):
                 return{ 'query': {'pages': {str(pageid): {'extract':'ceci est un mock api',
                                        'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'}}
@@ -123,7 +123,7 @@ def test_transformed_info_js(monkeypatch):
     pe.transformed_info_js(pageid)
     assert pe.info == 'ceci est un mock api'
     assert pe.url == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
-def test_transformed_info_js(monkeypatch):
+def test_transformed_info_js_error(monkeypatch):
     pageid = 56876948
     class MockReturning():
         def __init__(self, url, params = {"format": "json", # format de la réponse
@@ -133,15 +133,15 @@ def test_transformed_info_js(monkeypatch):
                       "exchars": 500, # Nombre de caractères à retourner
                        "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
                        "pageids": pageid}):
-            self.status_code = 300
-            self.status_code > 300
+            self.status_code = "Response [300]"
+            self.status_code != "Response [200]"
         def json(self):
-            return 'error'
+            return "error"
     monkeypatch.setattr("requests.get", MockReturning)
     pi = mediawiki.MediaWikiApi()
     pe = pybot.PapyBot()
     pe.transformed_info_js(pageid)
-    assert pi.result2 == "error"
+    assert pe.return_result == "error"
 def test_returning_dictionnary():
     final = pybot.PapyBot()
     adresses = "ceci est une adresse"
@@ -150,3 +150,5 @@ def test_returning_dictionnary():
     info = "ceci est un test"
     url = "https:XXXXXXXXXXXX.fr"
     assert final.returning_dictionnary(info, url, adresses, lati, longi) == {"addresse": adresses, "latitude": lati, "longitude": longi, "inquiries": info, "weblink": url }
+
+
