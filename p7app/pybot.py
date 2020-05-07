@@ -28,24 +28,17 @@ class PapyBot():
         """method that will put our page id into json"""
         self.lat = lat
         self.lng = lng
-        try:
-            media = mediawiki.MediaWikiApi()
-            media.search_around(self.lat, self.lng)
-            self.pageid_for_js = media.pageid
-        except:
-            self.result = media.result_1
-            return self.result
+        media = mediawiki.MediaWikiApi()
+        media.search_around(self.lat, self.lng)
+        self.pageid_for_js = media.pageid
+
     def transformed_info_js(self, pageid):
         """method that gives informartiona et url"""
         self.pageidjs = pageid
-        try:
-            super_media = mediawiki.MediaWikiApi()
-            super_media.search_pageid(self.pageidjs)
-            self.info = super_media.extract
-            self.url = super_media.fullurl
-        except:
-            self.return_result = super_media.result_2
-            return self.return_result  
+        super_media = mediawiki.MediaWikiApi()
+        super_media.search_pageid(self.pageidjs)
+        self.info = super_media.extract
+        self.url = super_media.fullurl 
     def returning_dictionnary(self, informartion, link_url, gps_adress, latitude, longitude):
         """method that return our dictionnary"""
         self.gps_adress = gps_adress
