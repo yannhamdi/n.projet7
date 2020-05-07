@@ -52,9 +52,7 @@ class MediaWikiApi:
             "pageids": self.pageid
         }
         self.response2 = requests.get(self.url_2, params=param)
-        print(self.response.status_code)
         if (self.response2.status_code == 200 or self.response2.status_code == "Response [200]"):
-            print(self.response2.status_code)
             info_search = self.response2.json()
             self.extract = info_search['query']['pages'][str(self.pageid)]['extract']
             self.fullurl = info_search['query']['pages'][str(self.pageid)]['fullurl']
@@ -67,8 +65,3 @@ class MediaWikiApi:
             self.result2 = "error"
             print(self.result2)
 
-def main():
-    popo = MediaWikiApi()
-    pageid = "salop"
-    popo.search_pageid(pageid)
-main()
