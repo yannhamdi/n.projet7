@@ -76,7 +76,7 @@ def test_search_pageid_correct(monkeypatch):
     monkeypatch.setattr("requests.get", Mock)
     pi = mediawiki.MediaWikiApi()
     pi.search_pageid(pageid)
-    assert pi.result2 == "error"   
+    assert pi.result_2 == "error"   
    
 
 
