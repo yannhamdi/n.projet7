@@ -18,7 +18,7 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     # Defining the mock for requests.get()
     class MockGet:
         def __init__(self,url, params = {"address": FAKE_ADDRESS, "key": 9584833}):
-            pass
+            self.status_code = 200
             
 
         def json(self):
@@ -35,3 +35,16 @@ def test_sending_to_api_handles_correct_result(monkeypatch):
     pi.sending_to_api("petit test avec mock")
     # Assert on the result's sending_to_api method
     assert pi.dictio_coord == [FAKE_ADDRESS, FAKE_LAT, FAKE_LNG]
+
+def test_sending_to_api_for_error(monkeypatch):
+    """ we test the exceptions"""
+    RESULTS = "error"
+    class Mockget:
+        def __init__(self, url,params):
+            self.status_code = 404
+        def json(self):
+            return RESULTS
+    monkeypatch.setattr("requests.get", Mockget)
+    mo = googlemapapi.TreatingApi()
+    mo.sending_to_api("petit test erreur")
+    assert mo.result == RESULTS
