@@ -14,7 +14,7 @@ class TreatingApi:
         self.address = ""
         self.lat = 0
         self.lng = 0
-        self.result ="error"
+        self.result =""
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         sentence = str(sentence)
@@ -36,6 +36,7 @@ class TreatingApi:
         else:
             print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de \
                 chose mais sur ce coup je ne vois pas ce que tu veux dire.")
+            self.result = "error"
             return self.result
 def main():
     po = TreatingApi()

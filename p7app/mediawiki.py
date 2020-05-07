@@ -14,6 +14,9 @@ class MediaWikiApi:
         self.dictionnary_search = []
         self.extract = ""
         self.fullurl = ""
+        self.result = ""
+        self.result2 = ""
+        self.response2 = ""
     def search_around(self, lat, lng):
         """function that tells us stories about a place near"""
         params = {
@@ -26,14 +29,16 @@ class MediaWikiApi:
             "gscoord": f"{lat}|{lng}"
                 }
         response = requests.get(self.url_2, params=params)
-        try:
+        if (response.status_code == 200):
             geosearch_data = response.json()
             nbre = len(geosearch_data["query"]["geosearch"])
             choice = ((randint(0, nbre)) - 1)
             self.pageid = geosearch_data["query"]["geosearch"][choice]['pageid']
             return self.pageid
-        except:
+        else:
             print("La requête a donné un statut d'erreur")
+            self.result = "error"
+            return self.result
     def search_pageid(self, pageid):
         """method that look nearby our place"""
         self.pageid = pageid
@@ -47,9 +52,9 @@ class MediaWikiApi:
             "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
             "pageids": self.pageid
         }
-        try:
-            response2 = requests.get(self.url_2, params=param)
-            info_search = response2.json()
+        self.response2 = requests.get(self.url_2, params=param)
+        if (self.response2.status_code == 200):
+            info_search = self.response2.json()
             self.extract = info_search['query']['pages'][str(self.pageid)]['extract']
             self.fullurl = info_search['query']['pages'][str(self.pageid)]['fullurl']
             print("T'ai je déjà parler de ce que l'on pouvait trouver \
@@ -57,7 +62,13 @@ class MediaWikiApi:
             self.dictionnary_search.append(self.extract)
             self.dictionnary_search.append(self.fullurl)
             return self.dictionnary_search
-        except:
+        else:
             print("La requête a donné un statut d'erreur")
-if __name__ == "__main__":
-    main()
+            self.result2 = "error"
+            return self.result2
+
+def main():
+    po = MediaWikiApi()
+    pageid = 450439
+    po.search_pageid(pageid)
+main()
