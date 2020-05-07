@@ -70,7 +70,6 @@ def test_search_pageid_correct(monkeypatch):
     class Mock():
         def __init__(self, url, params):
             self.status_code = 300
-            self.status_code > 300
         def json(self):
             return "error"
     monkeypatch.setattr("requests.get", Mock)
