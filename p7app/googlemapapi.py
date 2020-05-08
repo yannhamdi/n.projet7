@@ -14,14 +14,14 @@ class TreatingApi:
         self.address = ""
         self.lat = 0
         self.lng = 0
-        self.result =""
+        self.result = ""
     def sending_to_api(self, sentence):
         "function that sends the sentence to google api"
         sentence = str(sentence)
         url_1 = "https://maps.googleapis.com/maps/api/geocode/json?parameters"
         params = {"address": sentence, "key": keyapi}
         response = requests.get(url_1, params=params)
-        if (response.status_code == 200):
+        if response.status_code == 200:
             response_json = response.json()
             #we select the address
             self.address = (response_json["results"][0]["formatted_address"])
@@ -33,8 +33,11 @@ class TreatingApi:
             self.dictio_coord.append(self.lat)
             self.dictio_coord.append(self.lng)
             return self.dictio_coord
-        else:
-            print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de \
-                chose mais sur ce coup je ne vois pas ce que tu veux dire.")
-            self.result = "error"
-            return self.result
+        print("Désolé mon petit loup je sais que je suis vieux et connais énormèment de \
+            chose mais sur ce coup je ne vois pas ce que tu veux dire.")
+        self.result = "error"
+        return self.result
+def main():
+    """we initialize our main function"""
+    if __name__ == '__main__':
+        main()
