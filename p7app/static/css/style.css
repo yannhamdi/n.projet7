@@ -16,8 +16,7 @@ body
 .waiting
 {
 	display:block;
-	width: : 400px;
-	height: 300px;
+
 }
 header
 {
@@ -26,8 +25,7 @@ header
 	background-image: url(/static/img/robot.png);
 	background-repeat: repeat;
 	background-position: center;
-	flex-grow: 0;
-	
+	flex-grow: 0;	
 
 	
 }
