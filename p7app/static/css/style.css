@@ -9,7 +9,16 @@ body
 
 }
 
-
+.icone
+{
+	display: none;
+}
+.waiting
+{
+	display:block;
+	width: : 400px;
+	height: 300px;
+}
 header
 {
 	color: red;

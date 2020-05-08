@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
-
+""" test for our module mediawiki"""
 from p7app import mediawiki
 
 
@@ -63,7 +63,6 @@ def test_search_pageid_correct(monkeypatch):
     pi = mediawiki.MediaWikiApi()
     pi.search_pageid(pageid)
     assert pi.dictionnary_search == ['ceci est un mock api', 'https://fr.wikipedia.org/wiki/Academy_of_Art_University']
-
     def test_search_pageid_error(monkeypatch):
         "we mock our method search_page_id"
         pageid = 56876948

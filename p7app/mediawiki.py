@@ -65,3 +65,7 @@ class MediaWikiApi:
         print("la requête a donné une erreur")
         self.result_2 = "error"
         return self.result_2
+def main():
+    """we initialize our main function"""
+    if __name__ == '__main__':
+        main()

@@ -27,9 +27,16 @@ function processPotAnswer(response){
 	newElt.classList.add("answer")
 	newElt.textContent = nom ;
     b.appendChild(newElt);
+    var myImg = new Image();
+    myImg.src = '/static/img/ajax-loader.gif';
+    myImg.classList.add("icone")
+    b.appendChild(myImg); //we add the pic
+    var icone = document.querySelector(".icone");
+    icone.classList += "waiting";
     var adAsked = document.createElement("h5");
     adAsked.classList.add("answer")
     adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
+    icone.classList += " icone";
     b.appendChild(adAsked);
     var infoAsked = document.createElement("h5");
     infoAsked.classList.add("answer")
@@ -49,6 +56,7 @@ function processPotAnswer(response){
     urlAsked.title = "lien" ;
     urlAsked.href = response.weblink ;
     b.appendChild(urlAsked);
+
 }
 function sendingErrorMessage(){
     var messageError = document.createElement("h5");
