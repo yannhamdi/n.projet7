@@ -27,13 +27,21 @@ def test_transformed_gps_into_json_results():
             def sending_to_api(self, sentence):
                 pass
 
-        monkeypatch.setattr("p7app.googlemapapi.TteatingApi", MockGet)
+        monkeypatch.setattr("p7app.googlemapapi.TreatingApi", MockGet)
         po = pybot.PapyBot()
         po.transformed_gps_into_json("sentence")
         assert po.gps_lat == lat
         assert po.gps_lng == lng
         assert po.gps_adress == adresse
-
+def test_transformed_gps_into_json_results_error(monkeypatch):
+    class MockApi():
+        def __init__(self):
+            pass
+        def sending_to_api(self, sentence):
+            raise requests.RequestException("exception raised by requests")
+    monkeypatch.setattr("p7app.googlemapapi.TreatingApi", MockApi)
+    pe = pybot.PapyBot()
+    assert pe.transformed_gps_into_json_results("0lksoe") == "error"
 def test_transformed_pageid_into_json(monkeypatch):
     pageid = 4545
     FAKE_LAT = 50
@@ -73,6 +81,15 @@ def test_transformed_info_js(monkeypatch):
     pe.transformed_info_js(1)
     assert pe.info == extract
     assert pe.url == fullurl
+def test_transformed_info_js_error(monkeypatch):
+    class MockJson():
+        def __init__(self):
+            pass
+        def search_pageid(self, pageid):
+            raise requests.RequestException("exception raised by requests")
+    monkeypatch.setattr("p7app.mediawiki.MediaWikiApi", MockJson)
+    pe = pybot.PapyBot()
+    assert pe.transformed_info_js("eee") == "error"
 def test_returning_dictionnary():
     final = pybot.PapyBot()
     adresses = "ceci est une adresse"
