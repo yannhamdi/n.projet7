@@ -8,6 +8,8 @@ from p7app import googlemapapi
 
 from p7app import mediawiki
 
+import requests
+
 
 
 
@@ -28,9 +30,13 @@ class PapyBot():
         """method that will put our page id into json"""
         self.lat = lat
         self.lng = lng
-        media = mediawiki.MediaWikiApi()
-        media.search_around(self.lat, self.lng)
-        self.pageid_for_js = media.pageid
+        try:
+            media = mediawiki.MediaWikiApi()
+            media.search_around(self.lat, self.lng)
+            self.pageid_for_js = media.pageid
+        except requests.RequestException:
+            self.result = "error"
+            return self.result
 
     def transformed_info_js(self, pageid):
         """method that gives informartiona et url"""
