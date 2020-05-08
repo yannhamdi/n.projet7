@@ -20,72 +20,49 @@ def test_transformed_gps_into_json_results():
     def test_sending_to_api_handles_correct_result(monkeypatch):
         class MockGet:
             def __init__(self,url):
-                self.status_code = 200
+                self.gps_adress = adresse
+                self.gps_lat = lat
+                self.gps_lng = lng
+            def sending_to_api(self, sentence):
+                pass
 
-            def json(self):
-	            return {
-	                  "results": [{"formatted_address": adresse, "geometry": { "location":
-	                  { "lat": lat, "lng": lng}
-
-	                  }}]
-	}
-        # patching the request.get to mock the api call
-        monkeypatch.setattr("requests.get", MockGet)
-        # we call the method sending_to_api
-        pi = googlemapapi.TreatingApi()
-        pi.sending_to_api("petit test avec mock")
-        # Assert on the result's sending_to_api method
-        assert pi.address == FAKE_ADDRESS
-        assert pi.lat == FAKE_LAT
-        assert pi.lng == FAKE_LNG
-
+        monkeypatch.setattr("p7app.googlemapapi.TteatingApi", MockGet)
+        po = pybot.PapyBot()
+        po.transformed_gps_into_json("sentence")
+        assert po.gps_lat == lat
+        assert po.gps_lng == lng
+        assert po.gps_adress == adresse
 
 def test_transformed_pageid_into_json(monkeypatch):
-    F_LAT = 49.0
-    F_LNG = 3.0
+    pageid = 4545
+    FAKE_LAT = 50
+    FAKE_LNG = 45
     class MockReturn():
-        def __init__(self, url, params = {
-            "format": "json", # format de la réponse
-            "action": "query", # action à réaliser
-            "list": "geosearch", # méthode de recherche
-            "gsradius": 10000, # rayon de recherche autour des coordonnées GPS fournies (max 10'000 m)
-            "gscoord": f"{F_LAT}|{F_LNG}" # coordonnées GPS séparées par une barre verticale
-                }):
-            self.status_code = "Response [200]"
-
-        def json(self):
-	        return {
-                    'query': {'geosearch':[{
-                        'pageid': '9845754'}]}}
-    monkeypatch.setattr("requests.get", MockReturn)
-    pi = mediawiki.MediaWikiApi()
-    pa = pybot.PapyBot()
-    pa.transformed_pageid_into_json(59.79685,34.0984)
-    assert pa.pageid_for_js == '9845754'
-   
-
+        def __init__(self):
+            self.pageid = pageid
+            self.lat = FAKE_LAT
+            self.lng = FAKE_LNG
+        def search_around(self, lat, lng):
+            pass
+    monkeypatch.setattr("p7app.mediawiki.MediaWikiApi", MockReturn)
+    pl = pybot.PapyBot()
+    pl.transformed_pageid_into_json(FAKE_LAT, FAKE_LNG)
+    assert pl.pageid_for_js == pageid
 def test_transformed_info_js(monkeypatch):
-    pageid = 56876948
-    class MockReturning():
-        def __init__(self, url, params = {"format": "json", # format de la réponse
-                     "action": "query", # action à effectuer
-                       "prop": "extracts|info", # Choix des propriétés pour les pages requises
-                       "inprop": "url", # Fournit une URL complète, une URL de modification, et l’URL canonique de chaque page.
-                      "exchars": 500, # Nombre de caractères à retourner
-                       "explaintext": 1, # Renvoyer du texte brut (éliminer les balises de markup)
-                       "pageids": pageid}):
-            self.status_code = "Response [200]"
-        def json(self):
-                return{ 'query': {'pages': {str(pageid): {'extract':'ceci est un mock api',
-                                       'fullurl': 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'}}
-
-            }}
-    monkeypatch.setattr("requests.get", MockReturning)
-    pi = mediawiki.MediaWikiApi()
+    """mock for our method transformed info js"""  
+    extract = "ceci est un mock api"
+    fullurl = "mock full url"
+    class MockWiki():
+        def __init__(self):
+            self.extract = extract
+            self.fullurl = fullurl
+        def search_pageid(self, pageid):
+            pass
+    monkeypatch.setattr("p7app.mediawiki.MediaWikiApi", MockWiki)
     pe = pybot.PapyBot()
-    pe.transformed_info_js(pageid)
-    assert pe.info == 'ceci est un mock api'
-    assert pe.url == 'https://fr.wikipedia.org/wiki/Academy_of_Art_University'
+    pe.transformed_info_js(1)
+    assert pe.info == extract
+    assert pe.url == fullurl
 def test_returning_dictionnary():
     final = pybot.PapyBot()
     adresses = "ceci est une adresse"
