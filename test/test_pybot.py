@@ -7,6 +7,7 @@ from p7app import pybot
 
 from p7app import mediawiki
 
+import requests
 
 
 def test_transformed_gps_into_json_results():
@@ -48,6 +49,15 @@ def test_transformed_pageid_into_json(monkeypatch):
     pl = pybot.PapyBot()
     pl.transformed_pageid_into_json(FAKE_LAT, FAKE_LNG)
     assert pl.pageid_for_js == pageid
+def test_transformed_pageid_into_json_error(monkeypatch):
+    class MockWiki():
+        def __init__(self):
+            pass
+        def search_around(self, lat, lng):
+            raise requests.RequestException("exception raised by requests")
+    monkeypatch.setattr("p7app.mediawiki.MediaWikiApi", MockWiki)
+    pe = pybot.PapyBot()
+    assert pe.transformed_pageid_into_json("r","r") == "error"
 def test_transformed_info_js(monkeypatch):
     """mock for our method transformed info js"""  
     extract = "ceci est un mock api"
