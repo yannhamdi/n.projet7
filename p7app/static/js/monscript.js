@@ -27,7 +27,6 @@ function initMap(latitude, longitude){
         var marker = new google.maps.Marker({position: myLatLng, map: map});
     }
 function processPotAnswer(response){
-        loader.className = "waiting";
         var nom = document.getElementById("question").value;
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
@@ -68,6 +67,7 @@ function sendingErrorMessage(){
 }
 form.addEventListener("submit", function(event){
     event.preventDefault();
+    loader.className = "waiting";
     postFormData("/sendingServer",  new FormData(form))
     .then(response => processPotAnswer(response)
            )
