@@ -2,26 +2,32 @@
 # -*- coding: Utf-8 -*
 """module that deal with sending the answer to the web"""
 
+import requests
+
 from p7app import parsing
 
 from p7app import googlemapapi
 
 from p7app import mediawiki
 
-import requests
-
-
-
 
 class PapyBot():
     """class that will send all the informartion to our webpage"""
     def __init__(self):
         self.data_treated = {}
-        self.result =""
+        self.result = ""
+        self.gps_lat = 0
+        self.gps_lng = 0
+        self.pageid_for_js = 0
+        self.info = ""
+        self.url = ""
+        self.lat = 0
+        self.lng = 0
+        self.gps_adress = ""
     def transformed_gps_into_json_results(self, sentence):
-        self.sentence = sentence
+        """ we get our coordinates and adress"""
         sen = parsing.SentenceParse()
-        sen.returning_cleaned_sentence(self.sentence)
+        sen.returning_cleaned_sentence(sentence)
         try:
             goo = googlemapapi.TreatingApi()
             goo.sending_to_api(sen.sentence)
@@ -42,27 +48,23 @@ class PapyBot():
         except requests.RequestException:
             self.result = "error"
             return self.result
-
     def transformed_info_js(self, pageid):
         """method that gives informartiona et url"""
-        self.pageidjs = pageid
         try:
             super_media = mediawiki.MediaWikiApi()
-            super_media.search_pageid(self.pageidjs)
+            super_media.search_pageid(pageid)
             self.info = super_media.extract
             self.url = super_media.fullurl
         except requests.RequestException:
             self.result = "error"
             return self.result
- 
     def returning_dictionnary(self, informartion, link_url, gps_adress, latitude, longitude):
         """method that return our dictionnary"""
-        self.gps_adress = gps_adress
-        self.latitude = latitude
-        self.longitude = longitude
-        self.informartion = informartion
-        self.link_url = link_url
-        self.data_treated = {"addresse": self.gps_adress, "latitude": self.latitude, 
-                        "longitude": self.longitude , "inquiries": self.informartion, "weblink": self.link_url}
+        self.data_treated = {"addresse": gps_adress, "latitude": latitude,
+                             "longitude": longitude, "inquiries":
+                             informartion, "weblink":link_url}
         return self.data_treated
-        
+def  main():
+    """we initlialize our functibn main"""
+    if __name__ == '__main__':
+        main()

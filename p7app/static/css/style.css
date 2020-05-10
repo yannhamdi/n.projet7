@@ -1,23 +1,4 @@
 
-
-
-body
-{
-    height : 100vh;	
-    
-
-
-}
-
-.icone
-{
-	display: none;
-}
-.waiting
-{
-	display:block;
-
-}
 header
 {
 	color: red;
@@ -29,12 +10,13 @@ header
 
 	
 }
-#conteneur
+
+body
 {
-	background-color: white;
-	margin: auto;
-	width: auto;
-	margin-left: auto;
+    height : 100vh;	
+    margin: 0;
+    
+
 
 }
 
@@ -44,8 +26,52 @@ header
 	text-align: center;
 	font-size: 80px;
 	font-style: oblique;
+}
+#conteneur
+{
+	background-color: white;
+	margin: auto;
+	width: auto;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+}
 
-}	
+form
+{
+	font-size:30px;
+
+}
+input
+{
+	background-color: white ;
+}
+.icone
+{
+	display: none;
+}
+.waiting
+{
+	display:block;
+	margin-left: 50px;
+}
+.map
+{
+	height :200px;
+	width : 50%;
+	border-radius: 10px;
+}
+
+.answer
+{      
+	color: black;
+	font-size: 15px;
+	font-style: normal;
+	background-color: white;
+	width: auto;
+	height: auto;
+ 
+}
 
 main h1 
 {
@@ -58,21 +84,14 @@ main
 {
 	color: black;
 	font-style: oblique;
-	display: flex;
 	flex-grow: 1;
+	height :auto;
+	display: flex;
+	margin: 0;
+    padding: 0;
 
 }
-form
-{
-	font-size:30px;
 
-}
-.map
-{
-	height :200px;
-	width : 50%;
-	border-radius: 10px;
-}
 footer
 {
 	color: red;
@@ -80,25 +99,5 @@ footer
 	font-size :10px;
 	flex-grow: 0;
 	margin-top: 600px;
-}	
-.pied
-{
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-}
-input
-{
-	background-color: white ;
-}
-.answer
-{      
-	color: black;
-	font-size: 15px;
-	font-style: normal;
-	background-color: white;
-	width: auto;
-	height: auto;
- 
-}
 
+}	

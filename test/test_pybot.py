@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
 
+import requests
+
 from p7app import parsing
 
 from p7app import pybot
 
 from p7app import mediawiki
 
-import requests
+
 
 
 def test_transformed_gps_into_json_results():
