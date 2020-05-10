@@ -1,6 +1,11 @@
 
 let form = document.querySelector("#question-form");
 let b = document.querySelector("#question-form");
+var myImg = new Image();
+myImg.src = '/static/img/ajax-loader.gif';
+myImg.classList.add("icone");
+b.appendChild(myImg);
+const loader = document.querySelector(".icone");
 function postFormData(url, data){
     return fetch(url, {
         method : "POST",
@@ -22,20 +27,14 @@ function initMap(latitude, longitude){
         var marker = new google.maps.Marker({position: myLatLng, map: map});
     }
 function processPotAnswer(response){
-    var myImg = new Image();
-    myImg.src = '/static/img/ajax-loader.gif';
-    myImg.classList.add("icone");
-    b.appendChild(myImg);
-    const loader = document.querySelector(".icone");
-    loader.classList += "waiting";
-    try{
+        loader.className = "waiting";
         var nom = document.getElementById("question").value;
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
         newElt.textContent = nom ;
         b.appendChild(newElt);
         var adAsked = document.createElement("h5");
-        adAsked.classList.add("answer")
+        adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
         loader.className = "icone";
         b.appendChild(adAsked);
@@ -58,35 +57,19 @@ function processPotAnswer(response){
         urlAsked.href = response.weblink ;
         b.appendChild(urlAsked);
 }
-    catch(error){
-        var messageError = document.createElement("h5");
-        messageError.classList.add("answer");
-        loader.className = "icone";
-        messageError.textContent = "Je sais que je suis un dinosaure et que je connais énormèment de choses mais là je dois avouer que tu m'as posé une colle... Désolé mon petit canard";
-        b.appendChild(messageError);
-    }
-}
 function sendingErrorMessage(){
-    var myImg = new Image();
-    myImg.src = '/static/img/ajax-loader.gif';
-    myImg.classList.add("icone");
-    var load = document.getElementById("loader");
-    load.appendChild(myImg);
-    const loader = document.querySelector(".icone");
-    loader.classList += "waiting";
     var messageError = document.createElement("h5");
     messageError.classList.add("answer");
-    loader.className = "icone";
     messageError.textContent = "Je sais que je suis un dinosaure et que je connais énormèment de choses mais là je dois avouer que tu m'as posé une colle... Désolé mon petit canard";
+    loader.className = "icone";
     b.appendChild(messageError);
 
 
 }
 form.addEventListener("submit", function(event){
     event.preventDefault();
-    
     postFormData("/sendingServer",  new FormData(form))
     .then(response => processPotAnswer(response)
            )
-    .catch(error => console.log(error))
+    .catch(error => sendingErrorMessage())
 })
