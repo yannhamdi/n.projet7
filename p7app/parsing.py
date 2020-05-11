@@ -2,7 +2,7 @@
 # -*- coding: Utf-8 -*
 """module that will parses the sentence"""
 
-from p7app.settings import stop_words
+from p7app.stopword import stop_words
 
 class SentenceParse:
     """our class that will creates all the methods needed for parsing the sentence"""
