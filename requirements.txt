@@ -36,7 +36,7 @@ records==0.5.2
 requests==2.18.4
 selenium==3.6.0
 six==1.11.0
-SQLAlchemy==1.2.2
+Git rm -rf==1.2.2
 tablib==0.12.1
 unicodecsv==0.14.1
 urllib3==1.22
