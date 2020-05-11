@@ -1,1 +1,1 @@
-web :gunicorn flaskapp:app
+web :gunicorn run:p7app
