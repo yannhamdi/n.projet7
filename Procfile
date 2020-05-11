@@ -1,1 +1,1 @@
-web: gunicorn app:p7app
+web: gunicorn run:p7app
