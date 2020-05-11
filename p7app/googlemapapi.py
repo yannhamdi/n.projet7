@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
 "module for google map api"
-import requests
 
 
 import os
 
+import requests
 
 class TreatingApi:
     "class that will send a request to google map api"

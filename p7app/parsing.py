@@ -47,6 +47,8 @@ class SentenceParse:
         self.sentence = self.deleting_stop_words(self.sentence)
         self.sentence = self.deleting_several_spaces(self.sentence)
         return self.sentence
-if __name__ == "__main__":
-    main()
+def main():
+    """initialize main function"""
+    if __name__ == "__main__":
+        main()
     

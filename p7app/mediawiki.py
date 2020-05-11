@@ -26,9 +26,9 @@ class MediaWikiApi:
             "gsradius": 10000,
             # coordonnées GPS séparées par une barre verticale
             "gscoord": f"{lat}|{lng}"
-                }
+            }
         response = requests.get(self.url_2, params=params)
-        if (response.status_code == 200 or response.status_code == "Response [200]"):
+        if response.status_code == 200 or response.status_code == "Response [200]":
             geosearch_data = response.json()
             nbre = len(geosearch_data["query"]["geosearch"])
             choice = ((randint(0, nbre)) - 1)
@@ -51,7 +51,7 @@ class MediaWikiApi:
             "pageids": self.pageid
         }
         response2 = requests.get(self.url_2, params=param)
-        if (response2.status_code == 200 or response2.status_code == "Response [200]"):
+        if response2.status_code == 200 or response2.status_code == "Response [200]":
             info_search = response2.json()
             self.extract = info_search['query']['pages'][str(self.pageid)]['extract']
             self.fullurl = info_search['query']['pages'][str(self.pageid)]['fullurl']
