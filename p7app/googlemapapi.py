@@ -3,7 +3,8 @@
 "module for google map api"
 import requests
 
-from p7app.settings import keyapi
+
+import os
 
 
 class TreatingApi:
@@ -19,7 +20,7 @@ class TreatingApi:
         "function that sends the sentence to google api"
         sentence = str(sentence)
         url_1 = "https://maps.googleapis.com/maps/api/geocode/json?parameters"
-        params = {"address": sentence, "key": keyapi}
+        params = {"address": sentence, "key": os.environ.get(KEY_API)}
         response = requests.get(url_1, params=params)
         if response.status_code == 200:
             response_json = response.json()
