@@ -6,9 +6,6 @@ from random import randint
 
 import requests
 
-
-
-
 class MediaWikiApi:
     """class that calls wikipedia api"""
     def __init__(self):
