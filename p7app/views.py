@@ -1,3 +1,5 @@
+
+import os
 from flask import Flask, render_template, request, jsonify
 
 from . import parsing as par
@@ -6,7 +8,7 @@ from . import googlemapapi as goo
 
 from . import pybot as py 
 
-import os
+
 
 
 app = Flask(__name__)
