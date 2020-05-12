@@ -1,23 +1,23 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
-"module for google map api"
+"""module for google map api"""
 
 
 import os
-
 import requests
 
 class TreatingApi:
-    "class that will send a request to google map api"
+    """class that will send a request to google map api"""
     def __init__(self):
-        "we initialize what is necessary for our requests"
+        """we initialize what is necessary for our requests"""
         self.dictio_coord = []
         self.address = ""
         self.lat = 0
         self.lng = 0
         self.result = ""
+    
     def sending_to_api(self, sentence):
-        "function that sends the sentence to google api"
+        """function that sends the sentence to google api"""
         sentence = str(sentence)
         url_1 = "https://maps.googleapis.com/maps/api/geocode/json?parameters"
         params = {"address": sentence, "key": os.environ.get("KEY_API")}
@@ -38,6 +38,7 @@ class TreatingApi:
             chose mais sur ce coup je ne vois pas ce que tu veux dire.")
         self.result = "error"
         return self.result
+
 def main():
     """we initialize our main function"""
     if __name__ == '__main__':
