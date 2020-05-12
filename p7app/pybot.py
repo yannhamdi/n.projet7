@@ -5,9 +5,7 @@
 import requests
 
 from p7app import parsing
-
 from p7app import googlemapapi
-
 from p7app import mediawiki
 
 
