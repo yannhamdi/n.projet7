@@ -6,6 +6,9 @@ from random import randint
 
 import requests
 
+
+
+
 class MediaWikiApi:
     """class that calls wikipedia api"""
     def __init__(self):
@@ -16,6 +19,7 @@ class MediaWikiApi:
         self.result_1 = ""
         self.result_2 = ""
         self.dictionnary_search = []
+    
     def search_around(self, lat, lng):
         """function that tells us stories about a place near"""
         params = {
@@ -37,6 +41,7 @@ class MediaWikiApi:
         print("la requête a donné une erreur")
         self.result_1 = "error"
         return self.result_1
+    
     def search_pageid(self, pageid):
         """method that look nearby our place"""
         self.pageid = pageid
@@ -63,6 +68,7 @@ class MediaWikiApi:
         print("la requête a donné une erreur")
         self.result_2 = "error"
         return self.result_2
+
 def main():
     """we initialize our main function"""
     if __name__ == '__main__':
