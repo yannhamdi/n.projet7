@@ -24,6 +24,7 @@ class PapyBot():
         self.lat = 0
         self.lng = 0
         self.gps_adress = ""
+    
     def transformed_gps_into_json_results(self, sentence):
         """ we get our coordinates and adress"""
         sen = parsing.SentenceParse()
@@ -37,6 +38,7 @@ class PapyBot():
         except requests.RequestException:
             self.result = "error"
             return self.result
+    
     def transformed_pageid_into_json(self, lat, lng):
         """method that will put our page id into json"""
         self.lat = lat
