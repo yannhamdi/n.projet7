@@ -9,35 +9,34 @@
     </head>
 
     <body>  
-            <header>
-                      <div class="catchphrase"  >Bienvenue dans le monde des anciens... </div>
-            </header>
-            <div id="conteneur">
+        <header>
+             <div class="catchphrase"  >Bienvenue dans le monde des anciens... </div>
+        </header>
+        <div id="conteneur">
         
             <main>
-                     <div class="input_form">
-                     <form id="question-form">
-                     <p>
-                        <label for="question" >Votre demande à Pybot... </label>
-                        <input type="text" name="question" id="question" placeholder="Posez votre question" size="90" />
-                        <input type="submit" value="Envoyer" />
-                    </p>
+                <div class="input_form">
+                    <form id="question-form">
+                        <p>
+                            <label for="question" >Votre demande à Pybot... </label>
+                            <input type="text" name="question" id="question" placeholder="Posez votre question" size="90" />
+                            <input type="submit" value="Envoyer" />
+                        </p>
                         
                     </form>
                     </div>
-                <span id="loader" >
-                            </span>
+                <span id="loader" ></span>
             </main>
         
-            </div>
-            <footer>
-                 <h1> Hamdi Yann </h1>
-                 <a href="https://github.com/yannhamdi">Lien GitHub</a>
+                </div>
+        <footer>
+            <h1> Hamdi Yann </h1>
+             <a href="https://github.com/yannhamdi">Lien GitHub</a>
 
-             </footer>
+        </footer>
 
-             <script src="https://maps.googleapis.com/maps/api/js?key={{api_key}}" ></script>
-             <script src="{{url_for('static', filename='js/monscript.js')}}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{api_key}}" ></script>
+        <script src="{{url_for('static', filename='js/monscript.js')}}"></script>
      
      
     </body>
