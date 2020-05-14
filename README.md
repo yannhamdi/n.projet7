@@ -10,3 +10,5 @@ pip3 install install virtualenv
 Puis il faudra activer cet environnement: source env/bin/activate
 
 Finalement installer les packages nécésssaires une fois l'environnement virtuel activé: pip3 install -r requirements.txt"
+
+Puis lancer le programme en faisant python3 run.py
