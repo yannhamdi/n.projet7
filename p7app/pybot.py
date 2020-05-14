@@ -22,7 +22,7 @@ class PapyBot():
         self.lat = 0
         self.lng = 0
         self.gps_adress = ""
-    
+
     def transformed_gps_into_json_results(self, sentence):
         """ we get our coordinates and adress"""
         sen = parsing.SentenceParse()
@@ -36,7 +36,7 @@ class PapyBot():
         except requests.RequestException:
             self.result = "error"
             return self.result
-    
+
     def transformed_pageid_into_json(self, lat, lng):
         """method that will put our page id into json"""
         self.lat = lat
@@ -48,6 +48,7 @@ class PapyBot():
         except requests.RequestException:
             self.result = "error"
             return self.result
+
     def transformed_info_js(self, pageid):
         """method that gives informartiona et url"""
         try:
@@ -58,13 +59,17 @@ class PapyBot():
         except requests.RequestException:
             self.result = "error"
             return self.result
-    def returning_dictionnary(self, informartion, link_url, gps_adress, latitude, longitude):
+
+    def returning_dictionnary(self, informartion, link_url,
+                              gps_adress, latitude, longitude):
         """method that return our dictionnary"""
         self.data_treated = {"addresse": gps_adress, "latitude": latitude,
                              "longitude": longitude, "inquiries":
-                             informartion, "weblink":link_url}
+                             informartion, "weblink": link_url}
         return self.data_treated
-def  main():
+
+
+def main():
     """we initlialize our functibn main"""
     if __name__ == '__main__':
         main()
