@@ -36,7 +36,7 @@ function processPotAnswer(response){
         adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
         loader.className = "icone";
-        b.appendChild(adAsked);
+        b.insertBefore(adAsked, b.childNodes[0]);
         var infoAsked = document.createElement("h5");
         infoAsked.classList.add("answer")
         infoAsked.textContent = "T'ai je dèja raconté mon petit loup ce qui se trouve aux alentours? " + response.inquiries ;
