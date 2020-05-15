@@ -35,7 +35,7 @@ function processPotAnswer(response){
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
         newElt.textContent = nom ;
-        b.appendChild(newElt, c.firstChild);
+        c.insertBefore(newElt, c.firstChild);
         var adAsked = document.createElement("h5");
         adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
