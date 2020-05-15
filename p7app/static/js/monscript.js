@@ -74,5 +74,5 @@ form.addEventListener("submit", function(event){
     postFormData("/sendingServer",  new FormData(form))
     .then(response => processPotAnswer(response)
            )
-    .catch(error => sendingErrorMessage())
+    .catch(error => console.log(error())
 })
