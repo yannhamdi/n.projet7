@@ -14,7 +14,7 @@ header
 body
 {
     height : 100vh;	
-    margin: 0;
+    margin: 0, 0;
     
 
 
@@ -102,9 +102,4 @@ footer
 
 }	
 
-@media screen and (min-width: 600px){
-	header{
-		margin: 0;
-	}
-}
 
