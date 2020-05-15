@@ -102,4 +102,9 @@ footer
 
 }	
 
-
+@media screen and (min-width: 600px){
+	body{
+		margin: 0, 0;
+		padding: 0, 0;
+	}
+}
