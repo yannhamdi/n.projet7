@@ -32,7 +32,7 @@ function processPotAnswer(response){
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
         newElt.textContent = nom ;
-        c.insertBefore(newElt);
+        b.insertBefore(newElt, c);
         var adAsked = document.createElement("h5");
         adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
