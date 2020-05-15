@@ -103,7 +103,7 @@ footer
 	margin-top: 600px;
 
 }	
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 640px){
 	header{
 		max-width: 100%;
     padding: 0,0;
