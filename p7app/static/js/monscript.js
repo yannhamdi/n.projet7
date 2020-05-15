@@ -1,8 +1,6 @@
 
 let form = document.querySelector("#question-form");
 let b = document.querySelector("#question-form");
-let c = document.querySelector("#main");
-let d = document.querySelector("#result");
 var myImg = new Image();
 myImg.src = '/static/img/ajax-loader.gif';
 myImg.classList.add("icone");
@@ -33,7 +31,7 @@ function processPotAnswer(response){
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
         newElt.textContent = nom ;
-        c.insertBefore(newElt, c.childNodes[3]);
+        b.appendChild(newElt);
         var adAsked = document.createElement("h5");
         adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
