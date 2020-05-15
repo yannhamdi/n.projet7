@@ -33,6 +33,7 @@ function processPotAnswer(response){
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
         newElt.textContent = nom ;
+        console.log(c.childNodes[3]);
         c.insertBefore(newElt, d);
         var adAsked = document.createElement("h5");
         adAsked.classList.add("answer");
