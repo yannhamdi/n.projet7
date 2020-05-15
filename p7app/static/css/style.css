@@ -7,7 +7,7 @@ header
 	background-repeat: repeat;
 	background-position: center;
 	flex-grow: 0;	
-
+    max-width: 100%
 	
 }
 
@@ -102,11 +102,3 @@ footer
 
 }	
 
-@media screen and (min-width: 600px){
-	header{
-		margin: 0, 0;
-		padding: 0, 0;
-		width: 600px;
-		height: 400px;
-	}
-}
