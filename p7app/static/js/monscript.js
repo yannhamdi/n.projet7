@@ -1,11 +1,10 @@
 
 let form = document.querySelector("#question-form");
-let b = document.querySelector("#test");
-let c = document.querySelector('#loader')
+let b = document.querySelector("#question-form");
 var myImg = new Image();
 myImg.src = '/static/img/ajax-loader.gif';
 myImg.classList.add("icone");
-c.appendChild(myImg);
+b.appendChild(myImg);
 const loader = document.querySelector(".icone");
 function postFormData(url, data){
     return fetch(url, {
