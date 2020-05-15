@@ -22,6 +22,9 @@ function initMap(latitude, longitude){
          center : myLatLng,
          zoom: 12
         })
+
+
+
         
         b.appendChild(mapElt);
         var marker = new google.maps.Marker({position: myLatLng, map: map});
@@ -36,7 +39,7 @@ function processPotAnswer(response){
         adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
         loader.className = "icone";
-        b.appendChild(adAsked);
+        b.insertBefore(adAsked);
         var infoAsked = document.createElement("h5");
         infoAsked.classList.add("answer")
         infoAsked.textContent = "T'ai je dèja raconté mon petit loup ce qui se trouve aux alentours? " + response.inquiries ;
