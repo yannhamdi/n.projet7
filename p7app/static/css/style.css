@@ -102,10 +102,10 @@ footer
 
 }	
 
-@media all and (max-device-width: 480px)
+@media all and (max-device-width: 1024px)
 {
   header:
   {
-  	width: 480px;
+  	width: 1024px;
   }
 }
