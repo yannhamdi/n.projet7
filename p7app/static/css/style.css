@@ -104,7 +104,7 @@ footer
 
 @media screen and (min-width: 600px){
 	header{
-		margin-right: 20px;
+		margin: 0;
 	}
 }
 
