@@ -1,7 +1,7 @@
 
 let form = document.querySelector("#question-form");
 let b = document.querySelector("#question-form");
-const c = document.querySelector("#results");
+let c = document.querySelector("#results");
 var myImg = new Image();
 myImg.src = '/static/img/ajax-loader.gif';
 myImg.classList.add("icone");
