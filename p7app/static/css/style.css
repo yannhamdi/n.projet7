@@ -15,11 +15,15 @@ header
 
 body
 {
-    margin: 0,0,0,0;
-    padding: 0,0,0,0;
+     height : 100vh;	
     
 
 
+}
+
+.controle_largeur
+{
+	width: 100%;
 }
 
 .catchphrase
