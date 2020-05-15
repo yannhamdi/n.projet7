@@ -34,12 +34,12 @@ function processPotAnswer(response){
         var newElt = document.createElement("h5");
         newElt.classList.add("answer");
         newElt.textContent = nom ;
-        b.appendChild(newElt);
+        b.insertBefore(newElt);
         var adAsked = document.createElement("h5");
         adAsked.classList.add("answer");
         adAsked.textContent = "Voici l'addresse demandée: " + response.addresse ;
         loader.className = "icone";
-        b.insertBefore(adAsked);
+        b.appendChild(adAsked);
         var infoAsked = document.createElement("h5");
         infoAsked.classList.add("answer")
         infoAsked.textContent = "T'ai je dèja raconté mon petit loup ce qui se trouve aux alentours? " + response.inquiries ;
