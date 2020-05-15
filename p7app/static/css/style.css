@@ -101,3 +101,11 @@ footer
 	margin-top: 600px;
 
 }	
+
+@media all and (max-device-width: 480px)
+{
+  header:
+  {
+  	width: 480px;
+  }
+}
