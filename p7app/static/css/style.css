@@ -44,7 +44,11 @@ body
 	display: flex;
 	flex-direction: column;
 }
-
+#answer
+{
+	display: flex;
+	flex-direction: column;
+}
 form
 {
 	font-size:30px;
