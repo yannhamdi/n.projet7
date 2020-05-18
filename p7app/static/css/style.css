@@ -115,12 +115,12 @@ footer
 	body{
 		width: 100%;
 		padding: 0;
-		
+		margin:0;
 	}
 	.catchphrase
 	{
 		font-size: 30px;
-		text-align: left;
+		text-align: center;
 	}
 
 header
@@ -135,12 +135,13 @@ header
 	body{
 		width: 100%;
 		padding: 0;
+		margin:0;
 		
 	}
 	.catchphrase
 	{
 		font-size: 30px;
-		text-align: left;
+		text-align: center;
 	}
 
 
@@ -155,12 +156,12 @@ header
 	body{
 		width: 100%;
 		padding: 0;
-		
+		margin:0;
 	}
 	.catchphrase
 	{
 		font-size: 30px;
-		text-align: left;
+		text-align: center;
 	}
 header
 {
