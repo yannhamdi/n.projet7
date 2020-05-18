@@ -119,8 +119,9 @@ footer
 	}
    .conteneur
    {
-   	width: 100%
+   	width: 100%;
    }
+
 
 }
 
@@ -132,7 +133,7 @@ footer
 	}
 	.conteneur
    {
-   	width: 100%
+   	width: 100%;
    }
 }
 
@@ -144,6 +145,6 @@ footer
 	}
 	.conteneur
    {
-   	width: 100%
+   	width: 100%;
    }
 }
