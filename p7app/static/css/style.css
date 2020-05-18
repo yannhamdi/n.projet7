@@ -25,6 +25,11 @@ body
 
 }
 
+#question-form
+{
+	width: 100%;
+}
+
 .controle_largeur
 {
 	width: 100%;
