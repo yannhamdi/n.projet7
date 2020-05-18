@@ -117,7 +117,11 @@ footer
 		padding: 0;
 		
 	}
-	
+   .conteneur
+   {
+   	width: 100%
+   }
+
 }
 
 @media(max-width: 767px){
@@ -126,6 +130,10 @@ footer
 		padding: 0;
 		
 	}
+	.conteneur
+   {
+   	width: 100%
+   }
 }
 
 @media(max-width: 320px){
@@ -134,4 +142,8 @@ footer
 		padding: 0;
 		
 	}
+	.conteneur
+   {
+   	width: 100%
+   }
 }
