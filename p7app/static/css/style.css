@@ -117,6 +117,16 @@ footer
 		padding: 0;
 		
 	}
+	.catchphrase
+	{
+		font-size: 30px;
+		text-align: left;
+	}
+
+header
+{
+	height:100px;
+}
 
 
 }
@@ -127,7 +137,19 @@ footer
 		padding: 0;
 		
 	}
+	.catchphrase
+	{
+		font-size: 30px;
+		text-align: left;
+	}
+
+
+header
+{
+	height:100px;
 }
+}
+
 
 @media(max-width: 320px){
 	body{
@@ -135,4 +157,13 @@ footer
 		padding: 0;
 		
 	}
+	.catchphrase
+	{
+		font-size: 30px;
+		text-align: left;
+	}
+header
+{
+	height:100px;
+}
 }
