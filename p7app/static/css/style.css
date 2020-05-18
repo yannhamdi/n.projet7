@@ -117,11 +117,6 @@ footer
 		padding: 0;
 		
 	}
-   .conteneur
-   {
-   	width: 768px;
-   	overflow: scroll;
-   }
 
 
 }
@@ -132,11 +127,6 @@ footer
 		padding: 0;
 		
 	}
-	.conteneur
-   {
-   	width: 767px;
-   	overflow: scroll;
-   }
 }
 
 @media(max-width: 320px){
@@ -145,9 +135,4 @@ footer
 		padding: 0;
 		
 	}
-	.conteneur
-   {
-   	width: 320px;
-   	overflow: scroll;
-   }
 }
