@@ -113,7 +113,7 @@ footer
 @media(min-width: 768px) and (max-width: 1388px)
 {
 	body{
-		width: 100%;
+		width: 1388px;
 		padding: 0;
 		margin:0;
 		font-size: 30px;
@@ -138,7 +138,7 @@ header
 
 @media(max-width: 767px){
 	body{
-		width: 100%;
+		width: 767px;
 		padding: 0;
 		margin:0;
 		font-size: 30px;
@@ -164,7 +164,7 @@ header
 
 @media(max-width: 320px){
 	body{
-		width: 100%;
+		width: 320px;
 		padding: 0;
 		margin:0;
 		font-size: 30px;
