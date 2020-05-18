@@ -127,7 +127,10 @@ footer
 {
 	size: 30px;
 }
-
+.answer
+{
+	font-size: 20px;
+}
 header
 {
 	height:100px;
@@ -150,7 +153,10 @@ header
 		font-size: 30px;
 		text-align: center;
 	}
-
+.answer
+{
+	font-size: 20px;
+}
 
 header
 {
@@ -160,6 +166,10 @@ header
 #question
 {
 	size: 30px;
+}
+.answer
+{
+	font-size: 20px;
 }
 }
 
@@ -179,6 +189,10 @@ header
 #question
 {
 	size: 30px;
+}
+.answer
+{
+	font-size: 20px;
 }
 header
 {
