@@ -116,6 +116,10 @@ footer
 		width: 100%;
 		padding: 0;
 	}
+	.controle_largeur
+	{
+		width: 100px;
+	}
 }
 
 @media(max-width: 767px){
@@ -123,11 +127,19 @@ footer
 		width: 100%;
 		padding: 0;
 	}
+	.controle_largeur
+	{
+		width: 100px;
+	}
 }
 
 @media(max-width: 320px){
 	body{
 		width: 100%;
 		padding: 0;
+	}
+	.controle_largeur
+	{
+		width: 100px;
 	}
 }
