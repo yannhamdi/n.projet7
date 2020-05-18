@@ -113,7 +113,7 @@ footer
 @media(min-width: 768px) and (max-width: 1388px)
 {
 	body{
-		width: 1388px;
+		width: 100%;
 		padding: 0;
 		margin:0;
 		font-size: 30px;
@@ -131,6 +131,7 @@ footer
 header
 {
 	height:100px;
+	width: 100%;
 }
 
 
@@ -138,7 +139,7 @@ header
 
 @media(max-width: 767px){
 	body{
-		width: 767px;
+		width: 100%;
 		padding: 0;
 		margin:0;
 		font-size: 30px;
@@ -154,6 +155,7 @@ header
 header
 {
 	height:100px;
+	width: 100%;
 }
 #question
 {
@@ -164,7 +166,7 @@ header
 
 @media(max-width: 320px){
 	body{
-		width: 320px;
+		width: 100%;
 		padding: 0;
 		margin:0;
 		font-size: 30px;
@@ -181,5 +183,6 @@ header
 header
 {
 	height:100px;
+	width: 100%;
 }
 }
