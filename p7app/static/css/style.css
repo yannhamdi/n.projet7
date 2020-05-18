@@ -116,12 +116,17 @@ footer
 		width: 100%;
 		padding: 0;
 		margin:0;
+		font-size: 30px;
 	}
 	.catchphrase
 	{
 		font-size: 30px;
 		text-align: center;
 	}
+#question
+{
+	size: 30px;
+}
 
 header
 {
@@ -136,6 +141,7 @@ header
 		width: 100%;
 		padding: 0;
 		margin:0;
+		font-size: 30px;
 		
 	}
 	.catchphrase
@@ -149,6 +155,10 @@ header
 {
 	height:100px;
 }
+#question
+{
+	size: 30px;
+}
 }
 
 
@@ -157,12 +167,17 @@ header
 		width: 100%;
 		padding: 0;
 		margin:0;
+		font-size: 30px;
 	}
 	.catchphrase
 	{
 		font-size: 30px;
 		text-align: center;
 	}
+#question
+{
+	size: 30px;
+}
 header
 {
 	height:100px;
