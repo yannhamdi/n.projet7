@@ -119,3 +119,94 @@ footer
 	position: absolute;
 
 }	
+
+@media(min-width: 768px) and (max-width: 1388px)
+{
+	body{
+		width: 100%;
+		padding: 0;
+		margin:0;
+		font-size: 30px;
+	}
+	.catchphrase
+	{
+		font-size: 30px;
+		text-align: center;
+	}
+#question
+{
+	size: 10px;
+}
+.answer
+{
+	font-size: 10px;
+}
+header
+{
+	height:100px;
+	width: 100%;
+}
+
+
+}
+
+@media(max-width: 767px){
+	body{
+		width: 100%;
+		padding: 0;
+		margin:0;
+		font-size: 30px;
+		
+	}
+	.catchphrase
+	{
+		font-size: 30px;
+		text-align: center;
+	}
+.answer
+{
+	font-size: 10px;
+}
+
+header
+{
+	height:100px;
+	width: 100%;
+}
+#question
+{
+	size: 10px;
+}
+.answer
+{
+	font-size: 10px;
+}
+}
+
+
+@media(max-width: 320px){
+	body{
+		width: 100%;
+		padding: 0;
+		margin:0;
+		font-size: 30px;
+	}
+	.catchphrase
+	{
+		font-size: 30px;
+		text-align: center;
+	}
+#question
+{
+	size: 10px;
+}
+.answer
+{
+	font-size: 10px;
+}
+header
+{
+	height:100px;
+	width: 100%;
+}
+}
